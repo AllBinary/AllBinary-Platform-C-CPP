@@ -23,11 +23,6 @@
         </repository>
     </distributionManagement>
 
-   <properties>
-        <buildLabel>${project.version}</buildLabel>
-        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
-    </properties>
-
     <properties>
         <cygwin.home>G:/cygwin64</cygwin.home>
         <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>

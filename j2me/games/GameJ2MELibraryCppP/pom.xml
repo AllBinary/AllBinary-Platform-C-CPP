@@ -142,7 +142,7 @@
         <module>../../games/GameResourceJavaLibraryCppM</module>
         <module>../../games/GameSoundsJavaLibraryCppM</module>
 
-        <module>../../input/TouchInputLibraryP</module>
+        <module>../../input/TouchInputLibraryCppP</module>
 
         <module>../../media/MediaDataCppM</module>
         <module>../../media/sound/NotDeviceSpecificNoMediaMIDP1LibraryCppM</module>
@@ -181,7 +181,7 @@
         <module>../GameJ2MELibraryCppM</module>
         
         <!--
-        <module>../GameJ2MEOptionalLibraryPOCppM</module>
+        <module>../GameJ2MEOptionalLibraryPOM</module>
         -->
     
     </modules>

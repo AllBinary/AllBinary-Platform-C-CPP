@@ -43,7 +43,7 @@
         <module>../AllBinaryJ2MELibraryCppM</module>
         <module>../NullJ2MELibraryCppM</module>
                 
-        <module>../AllBinaryOptionalLibraryPOCppM</module>
+        <module>../AllBinaryOptionalLibraryPOM</module>
     </modules>
 
 </project>

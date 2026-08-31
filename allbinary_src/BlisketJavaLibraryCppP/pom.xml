@@ -43,7 +43,7 @@
     <modules>
 
         <!--
-        <module>../../j2me/AllBinaryJ2MELibraryP</module>
+        <module>../../j2me/AllBinaryJ2MELibraryCppP</module>
         -->
         <!--
         <module>../data/DataJavaLibraryCppM</module>

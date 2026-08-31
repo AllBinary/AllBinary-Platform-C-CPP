@@ -56,12 +56,12 @@
         <module>../j2me/media/graphics/geography/map/BasicTopViewGeographicMapJavaLibraryCppM</module>
         <module>../j2me/games/arcade/platformer/TopViewGameBehaviorJavaLibraryCppM</module>
 
-        <module>../j2me/games/GameJ2MEOptionalLibraryPOCppM</module>
+        <module>../j2me/games/GameJ2MEOptionalLibraryPOM</module>
 
         <module>../j2me/media/graphics/geography/map/GraphP</module>
-        <module>../j2me/games/strategy/rts/RTSGameJavaLibraryP</module>
+        <module>../j2me/games/strategy/rts/RTSGameJavaLibraryCppP</module>
         
-        <module>../j2me/android/AllBinaryPlatformAndroidLibraryPOCppM</module>
+        <module>../j2me/android/AllBinaryPlatformAndroidLibraryPOM</module>
 
     </modules>
 

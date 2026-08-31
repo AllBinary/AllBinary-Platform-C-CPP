@@ -25,10 +25,6 @@
     </distributionManagement>
 
     <properties>
-        <buildLabel>${project.version}</buildLabel>
-    </properties>
-
-    <properties>
         <cygwin.home>G:/cygwin64</cygwin.home>
         <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
         <native.c.standard>c17</native.c.standard>

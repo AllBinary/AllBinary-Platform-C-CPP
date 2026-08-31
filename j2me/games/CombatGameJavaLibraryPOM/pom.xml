@@ -108,19 +108,19 @@
 
         Since POMs are built before the other libs is it best to handle this differently
         ../../
-        <module>../../../../work/j2me/games/strategy/rts/RTSGameJavaLibraryP</module>
+        <module>../../../../work/j2me/games/strategy/rts/RTSGameJavaLibraryCppP</module>
         -->
 
-        <module>../../media/graphics/OtherGraphicsMediaLibraryP</module>
+        <module>../../media/graphics/OtherGraphicsMediaLibraryCppP</module>
 
         <module>../../input/NoTouchButtonResourceAnimationJavaLibraryCppM</module>
         <module>../../input/TouchButtonResourceAnimationJavaLibraryCppM</module>
         <module>../../input/TouchButtonResourceOpenGLESAnimationJavaLibraryCppM</module>
 
         <module>../../input/TrackingEventJavaLibraryCppM</module>
-        <module>../../../game/behavior/BehaviorLibraryP</module>
+        <module>../../../game/behavior/BehaviorLibraryCppP</module>
 
-        <module>../../media/sound/OtherSoundMediaLibraryP</module>
+        <module>../../media/sound/OtherSoundMediaLibraryCppP</module>
 
         <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibraryCppM</module>
         <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibraryCppM</module>

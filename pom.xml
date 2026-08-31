@@ -32,14 +32,14 @@
 
         <!--
         -->
-        <module>./j2me/AllBinaryBaseLibraryPOCppM</module>
-        <module>./j2me/AllBinaryJ2MELibraryP</module>
-        <module>./AllBinaryPersistenceLibraryP</module>
+        <module>./j2me/AllBinaryBaseLibraryPOM</module>
+        <module>./j2me/AllBinaryJ2MELibraryCppP</module>
+        <module>./AllBinaryPersistenceLibraryCppP</module>
 
-        <module>./automation/InputAutomationToolsP</module>
-        <module>./graphics/GraphicsToolsP</module>
-        <module>./allbinary_src/FreeblisketJavaLibraryP</module>
-        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryP</module>
+        <module>./automation/InputAutomationToolsCppP</module>
+        <module>./graphics/GraphicsToolsCppP</module>
+        <module>./allbinary_src/FreeblisketJavaLibraryCppP</module>
+        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryCppP</module>
 
         <!--
         <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryCppM</module>

@@ -42,7 +42,7 @@
     
     <modules>
 
-        <module>../BlisketJavaLibraryP</module>
+        <module>../BlisketJavaLibraryCppP</module>
 
         <!--
         <module>../logging/LogConfigTypeFreeblisketJavaLibraryCppM</module>

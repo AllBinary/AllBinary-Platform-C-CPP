@@ -21,11 +21,6 @@
             <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
-    
-    <properties>
-        <buildLabel>${project.version}</buildLabel>
-        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
-    </properties>
 
     <properties>
         <cygwin.home>G:/cygwin64</cygwin.home>
