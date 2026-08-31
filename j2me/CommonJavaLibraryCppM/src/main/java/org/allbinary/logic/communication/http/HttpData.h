@@ -49,15 +49,15 @@ class HttpData
             : public Object
          {
 
-    private: static const HttpData instance = new HttpData();
+    private: static HttpData instance() { return HttpData(); }
 
     public: static HttpData getInstance();
 
-    public: const std::string EQUALS;
+    public: std::string EQUALS;
 
-    public: const std::string PARAM_SEP;
+    public: std::string PARAM_SEP;
 
-    public: const std::string URL_PARAM_SEP;
+    public: std::string URL_PARAM_SEP;
 
     public: const std::string URL_LABEL = "Url: ";
 

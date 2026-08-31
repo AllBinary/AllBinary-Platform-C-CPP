@@ -55,7 +55,7 @@ class CommonLabels
             : public Object
          {
 
-    private: static const CommonLabels instance = new CommonLabels();
+    private: static CommonLabels instance() { return CommonLabels(); }
 
     public: static CommonLabels getInstance();
 
@@ -75,7 +75,7 @@ class CommonLabels
 
     public: const std::string NAME_LABEL = "Name: ";
 
-    public: const std::string START = this.START_LABEL;
+    public: const std::string START = this->START_LABEL;
 
     public: const std::string ELAPSED = " Elapsed: ";
 

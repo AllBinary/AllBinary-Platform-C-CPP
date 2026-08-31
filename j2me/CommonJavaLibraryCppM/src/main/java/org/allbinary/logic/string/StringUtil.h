@@ -22,6 +22,8 @@
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_H
 
             #include "../../../../java/lang/Object.h"
+
+#include <vector>
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -58,22 +60,19 @@ class StringUtil
             : public Object
          {
 
-    private: static const StringUtil instance = new StringUtil();
+    private: static StringUtil instance() { return StringUtil(); }
 
     public: static StringUtil getInstance();
 
-    public: const std::string INIT_STRING = .toCharArray();
+    public: const std::string INIT_STRING = "";
 
     public: const std::string NULL_STRING = "null";
 
     public: const std::string EMPTY_STRING = "";
 
-    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = 
-                                                        [
-                                                            this.EMPTY_STRING
-                                                        ];
+    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = {this->EMPTY_STRING};
 
-    private: const std::vector<std::string> stringArray = [];
+    private: const std::vector<std::string> stringArray = {};
 
 private: StringUtil();
 
@@ -83,7 +82,7 @@ private: StringUtil();
 
     public: int32_t count(std::string string, char aChar);
 
-    public: std::string toString(any = {} anyType);
+        public: std::string toString(Object* object);
 
 };
 

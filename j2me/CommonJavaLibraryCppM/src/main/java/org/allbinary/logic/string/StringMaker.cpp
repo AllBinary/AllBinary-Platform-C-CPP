@@ -51,109 +51,107 @@ class StringMaker
     private: int32_t currentLength= 0;
 
 public: StringMaker(){
-
-            super();
-        this.charArray= new Array(20);
+this->charArray= std::vector<char>(20);
     
 }
 
 
     public: StringMaker append(std::string string){
 
-    int32_t stringLength = string.length!;;
+    int32_t stringLength = string.size();;
     
-this.ensureCapacity(this.currentLength +stringLength);
+this->ensureCapacity(this->currentLength +stringLength);
     
 
 
 
-        for (let i = 0; i < stringLength; i++) {
-            this.charArray[this.currentLength + i - 0] = 
-    string.charAt(i);
+        for (int32_t i = 0; i < stringLength; i++) {
+            this->charArray[this->currentLength + i - 0] = 
+    string[i];
         }
                                     ;
     
-this.currentLength += stringLength;
+this->currentLength += stringLength;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: StringMaker appendchar(char c){
-this.ensureCapacity(this.currentLength +1);
+this->ensureCapacity(this->currentLength +1);
     
-this.charArray[this.currentLength++]= c;
+this->charArray[this->currentLength++]= c;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: StringMaker appendbyte(int8_t b){
-this.append(b.toString());
+this->append(std::to_string(b));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: StringMaker appendshort(int16_t b){
-this.append(b.toString());
+this->append(std::to_string(b));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: StringMaker appendint(int32_t i){
-this.append(i.toString());
+this->append(std::to_string(i));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: StringMaker appendlong(int64_t l){
-this.append(l.toString());
+this->append(std::to_string(l));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: StringMaker appendfloat(float f){
-this.append(f.toString());
+this->append(std::to_string(f));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
@@ -163,31 +161,31 @@ this.append(f.toString());
                         if(bool_)
                         
                                     {
-                                    this.ensureCapacity(this.currentLength +4);
+                                    this->ensureCapacity(this->currentLength +4);
     
-this.charArray[this.currentLength++]= 't';
+this->charArray[this->currentLength++]= 't';
     
-this.charArray[this.currentLength++]= 'r';
+this->charArray[this->currentLength++]= 'r';
     
-this.charArray[this.currentLength++]= 'u';
+this->charArray[this->currentLength++]= 'u';
     
-this.charArray[this.currentLength++]= 'e';
+this->charArray[this->currentLength++]= 'e';
     
 
                                     }
                                 
                         else {
-                            this.ensureCapacity(this.currentLength +5);
+                            this->ensureCapacity(this->currentLength +5);
     
-this.charArray[this.currentLength++]= 'f';
+this->charArray[this->currentLength++]= 'f';
     
-this.charArray[this.currentLength++]= 'a';
+this->charArray[this->currentLength++]= 'a';
     
-this.charArray[this.currentLength++]= 'l';
+this->charArray[this->currentLength++]= 'l';
     
-this.charArray[this.currentLength++]= 's';
+this->charArray[this->currentLength++]= 's';
     
-this.charArray[this.currentLength++]= 'e';
+this->charArray[this->currentLength++]= 'e';
     
 
                         }
@@ -196,15 +194,14 @@ this.charArray[this.currentLength++]= 'e';
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
     public: void ensureCapacity(int32_t minSize){
 
-    int32_t oldCapacity = this.charArray!.length
-                ;;
+    int32_t oldCapacity = this->charArray.size();;
     
 
                         if(minSize > oldCapacity)
@@ -215,19 +212,19 @@ this.charArray[this.currentLength++]= 'e';
     
 
                         if(newCapacity < minSize)
-                        newCapacity= minSize
+                        newCapacity= minSize;
 
     std::vector<char> copy = 
                                                         
-                                                        new Array(newCapacity)
+                                                        std::vector<char>(newCapacity)
                                                     ;;
     
 
-    int32_t min = this.min(this.charArray!.length, newCapacity)!;;
+    int32_t min = this->min(this->charArray.size(), newCapacity);;
     
-System.arraycopy(this.charArray, 0, copy, 0, min);
+std::copy(this->charArray.begin(), this->charArray.begin() + min, copy.begin());
     
-this.charArray= copy;
+this->charArray= copy;
     
 
                                     }
@@ -253,13 +250,13 @@ this.charArray= copy;
 
 
     public: StringMaker delete_(int32_t start, int32_t end){
-this.currentLength -= (end -start);
+this->currentLength -= (end -start);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
@@ -269,7 +266,7 @@ this.currentLength -= (end -start);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentLength;
+                        return this->currentLength;
     
 }
 
@@ -279,7 +276,7 @@ this.currentLength -= (end -start);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.charArray.slice(0, this.currentLength).join('');
+                        return std::string(this->charArray.begin() + 0, this->charArray.begin() + 0 + this->currentLength);
     
 }
 

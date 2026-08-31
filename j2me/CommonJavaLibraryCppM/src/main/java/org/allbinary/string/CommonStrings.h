@@ -22,6 +22,8 @@
         #define ORG_ALLBINARY_STRING_COMMONSTRINGS_H
 
             #include "../../../java/lang/Object.h"
+
+#include <vector>
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -55,7 +57,7 @@ class CommonStrings
             : public Object
          {
 
-    private: static const CommonStrings instance = new CommonStrings();
+    private: static CommonStrings instance() { return CommonStrings(); }
 
     public: static CommonStrings getInstance();
 
@@ -95,10 +97,7 @@ class CommonStrings
 
     public: const std::string RIGHT = "right";
 
-    public: const std::vector<std::string> DIRECTION_NAME = 
-                                                        [
-                                                            this.DOWN,this.LEFT,this.RIGHT,this.UP
-                                                        ];
+        public: const std::vector<std::string> DIRECTION_NAME = {this->DOWN, this->LEFT, this->RIGHT, this->UP};
 
     public: const std::string CREATE = "Create";
 
@@ -122,7 +121,7 @@ class CommonStrings
 
     public: const std::string VISIT = "visit";
 
-    public: const std::string START_METHOD_NAME = this.START;
+    public: const std::string START_METHOD_NAME = this->START;
 
     public: const std::string END_METHOD_NAME = "end";
 

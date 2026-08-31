@@ -44,7 +44,8 @@ class J2MEUtil
          {
         
 
-    public static bool isJ2ME(){
+public:
+    static bool isJ2ME(){
 
 
 
@@ -54,7 +55,7 @@ class J2MEUtil
 }
 
 
-    public static bool isJ2SE(){
+    static bool isJ2SE(){
 
 
 
@@ -64,7 +65,7 @@ class J2MEUtil
 }
 
 
-    public static bool isHTML(){
+    static bool isHTML(){
 
 
 
@@ -74,10 +75,8 @@ class J2MEUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private:
+    J2MEUtil() = default;
 
 
 };

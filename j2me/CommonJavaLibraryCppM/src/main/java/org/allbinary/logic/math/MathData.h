@@ -52,21 +52,21 @@ class MathData
             : public Object
          {
 
-    private: static const MathData instance = new MathData();
+    private: static MathData instance() { return MathData(); }
 
     public: static MathData getInstance();
 
-    public: const std::string EQUALS;
+    public: std::string EQUALS;
 
     public: const std::string PLUS = "+";
 
     public: const std::string GREATER_THAN = ">";
 
-    public: const std::string MINUS;
+    public: std::string MINUS;
 
-    public: const std::string DIVIDE;
+    public: std::string DIVIDE;
 
-    public: const std::string MULTIPLY;
+    public: std::string MULTIPLY;
 
 private: MathData();
 

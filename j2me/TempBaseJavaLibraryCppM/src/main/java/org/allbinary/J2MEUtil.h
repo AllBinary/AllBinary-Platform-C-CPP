@@ -47,13 +47,15 @@ class J2MEUtil
          {
         
 
-    public static bool isJ2ME();
+public:
+        static bool isJ2ME();
 
-    public static bool isJ2SE();
+        static bool isJ2SE();
 
-    public static bool isHTML();
+        static bool isHTML();
 
-private constructor ();
+private:
+        J2MEUtil() = default;
 
 };
 

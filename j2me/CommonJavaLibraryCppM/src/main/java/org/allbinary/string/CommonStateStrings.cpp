@@ -43,14 +43,14 @@ class CommonStateStrings
             : public Object
          {
 
-    private: static const CommonStateStrings instance = new CommonStateStrings();
+    private: static CommonStateStrings instance() { return CommonStateStrings(); }
 
     public: static CommonStateStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonStateStrings.instance;
+                        return CommonStateStrings::instance();
     
 }
 

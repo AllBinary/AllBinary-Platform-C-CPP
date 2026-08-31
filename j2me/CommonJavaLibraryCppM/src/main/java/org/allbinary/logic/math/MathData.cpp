@@ -49,43 +49,41 @@ class MathData
             : public Object
          {
 
-    private: static const MathData instance = new MathData();
+    private: static MathData instance() { return MathData(); }
 
     public: static MathData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MathData.instance;
+                        return MathData::instance();
     
 }
 
 
-    public: const std::string EQUALS;
+    public: std::string EQUALS;
 
     public: const std::string PLUS = "+";
 
     public: const std::string GREATER_THAN = ">";
 
-    public: const std::string MINUS;
+    public: std::string MINUS;
 
-    public: const std::string DIVIDE;
+    public: std::string DIVIDE;
 
-    public: const std::string MULTIPLY;
+    public: std::string MULTIPLY;
 
 private: MathData(){
 
-            super();
-        
-    CommonSeps commonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
-this.EQUALS= commonSeps!.EQUALS;
+this->EQUALS= commonSeps.EQUALS;
     
-this.MINUS= commonSeps!.DASH;
+this->MINUS= commonSeps.DASH;
     
-this.DIVIDE= commonSeps!.FORWARD_SLASH;
+this->DIVIDE= commonSeps.FORWARD_SLASH;
     
-this.MULTIPLY= CommonPhoneStrings.getInstance()!.STAR;
+this->MULTIPLY= CommonPhoneStrings::getInstance().STAR;
     
 }
 

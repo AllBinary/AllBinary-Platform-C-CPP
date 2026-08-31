@@ -19,6 +19,8 @@
 
 
             #include "../../../../java/lang/Object.h"
+
+#include <vector>
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -55,49 +57,42 @@ class StringUtil
             : public Object
          {
 
-    private: static const StringUtil instance = new StringUtil();
+    private: static StringUtil instance() { return StringUtil(); }
 
     public: static StringUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.instance;
+                        return StringUtil::instance();
     
 }
 
 
-    public: const std::string INIT_STRING = .toCharArray();
+    public: const std::string INIT_STRING = "";
 
     public: const std::string NULL_STRING = "null";
 
     public: const std::string EMPTY_STRING = "";
 
-    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = 
-                                                        [
-                                                            this.EMPTY_STRING
-                                                        ];
+    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = {this->EMPTY_STRING};
 
-    private: const std::vector<std::string> stringArray = [];
+    private: const std::vector<std::string> stringArray = {};
 
 private: StringUtil(){
-
-            super();
-        }
+}
 
 
     public: std::string getNonNull(std::string string){
 
-                        if(string == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EMPTY_STRING;
+                        return this->EMPTY_STRING;
     
 
                                     }
@@ -120,7 +115,7 @@ private: StringUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.stringArray;
+                        return this->stringArray;
     
 }
 
@@ -130,7 +125,7 @@ private: StringUtil(){
     int32_t count = 0;;
     
 
-    int32_t size = string.length!;;
+    int32_t size = string.size();;
     
 
 
@@ -159,18 +154,16 @@ private: StringUtil(){
 }
 
 
-    public: std::string toString(any = {} anyType){
+    public: std::string toString(Object* object){
 
-                        if(anyType != 
-                                    null
-                                )
+                        if(object != nullptr)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType!.toString();;
+                        return object->toString();
     
 
                                     }
@@ -180,7 +173,7 @@ private: StringUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_STRING;
+                        return this->NULL_STRING;
     
 
                         }

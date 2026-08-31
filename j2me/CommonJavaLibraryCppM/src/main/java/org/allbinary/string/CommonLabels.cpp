@@ -52,14 +52,14 @@ class CommonLabels
             : public Object
          {
 
-    private: static const CommonLabels instance = new CommonLabels();
+    private: static CommonLabels instance() { return CommonLabels(); }
 
     public: static CommonLabels getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonLabels.instance;
+                        return CommonLabels::instance();
     
 }
 
@@ -80,7 +80,7 @@ class CommonLabels
 
     public: const std::string NAME_LABEL = "Name: ";
 
-    public: const std::string START = this.START_LABEL;
+    public: const std::string START = this->START_LABEL;
 
     public: const std::string ELAPSED = " Elapsed: ";
 

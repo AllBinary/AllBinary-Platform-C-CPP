@@ -43,14 +43,14 @@ class CommonPhoneStrings
             : public Object
          {
 
-    private: static const CommonPhoneStrings instance = new CommonPhoneStrings();
+    private: static CommonPhoneStrings instance() { return CommonPhoneStrings(); }
 
     public: static CommonPhoneStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonPhoneStrings.instance;
+                        return CommonPhoneStrings::instance();
     
 }
 

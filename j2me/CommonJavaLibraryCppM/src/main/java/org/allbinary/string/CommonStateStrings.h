@@ -46,7 +46,7 @@ class CommonStateStrings
             : public Object
          {
 
-    private: static const CommonStateStrings instance = new CommonStateStrings();
+    private: static CommonStateStrings instance() { return CommonStateStrings(); }
 
     public: static CommonStateStrings getInstance();
 

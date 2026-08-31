@@ -47,11 +47,13 @@ class AndroidUtil
          {
         
 
-    public static bool isMemoryRestrictive();
+public:
+        static bool isMemoryRestrictive();
 
-    public static bool isAndroid();
+        static bool isAndroid();
 
-private constructor ();
+private:
+        AndroidUtil() = default;
 
 };
 

@@ -46,7 +46,7 @@ class CommonPhoneStrings
             : public Object
          {
 
-    private: static const CommonPhoneStrings instance = new CommonPhoneStrings();
+    private: static CommonPhoneStrings instance() { return CommonPhoneStrings(); }
 
     public: static CommonPhoneStrings getInstance();
 

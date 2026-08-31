@@ -58,7 +58,7 @@ class CommonSeps
             : public Object
          {
 
-    private: static const CommonSeps instance = new CommonSeps();
+    private: static CommonSeps instance() { return CommonSeps(); }
 
     public: static CommonSeps getInstance();
 
@@ -78,9 +78,9 @@ class CommonSeps
 
     public: const std::string UNDERSCORE = "_";
 
-    public: const std::string COLON_SEP = new StringMaker().append(this.COLON)!.append(this.SPACE)!.toString()!;
+    public: const std::string COLON_SEP = StringMaker().append(this->COLON).append(this->SPACE).toString();
 
-    public: const std::string COMMA_SEP = new StringMaker().append(this.COMMA)!.append(this.SPACE)!.toString()!;
+    public: const std::string COMMA_SEP = StringMaker().append(this->COMMA).append(this->SPACE).toString();
 
     public: const std::string PARENTHESIS_OPEN = "(";
 

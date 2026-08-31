@@ -44,7 +44,8 @@ class AndroidUtil
          {
         
 
-    public static bool isMemoryRestrictive(){
+public:
+        static bool isMemoryRestrictive(){
 
 
 
@@ -54,7 +55,7 @@ class AndroidUtil
 }
 
 
-    public static bool isAndroid(){
+        static bool isAndroid(){
 
 
 
@@ -64,10 +65,8 @@ class AndroidUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private:
+        AndroidUtil() = default;
 
 
 };
