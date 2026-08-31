@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryPersistenceLibraryPCpp</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryPersistenceLibraryPCpp</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        
+        <!--
+        -->
+        <module>../allbinary_src/cache/AllBinaryCacheLibraryCppM</module>
+        <module>../allbinary_src/PermutationsJavaLibraryCppM</module>
+        <module>../allbinary_src/logic/BasePreloaderFileJavaLibraryCppM</module>
+        <module>../allbinary_src/logic/data/file/FileJavaLibraryCppM</module>
+        <module>../allbinary_src/logic/data/file/FileJ2SEJavaLibraryCppM</module>
+        <module>../allbinary_src/data/DataJavaLibraryCppM</module>
+        <module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryCppM</module>
+        <module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryCppM</module>
+        <module>../allbinary_src/PreLoaderJavaLibraryCppM</module>
+        <module>../allbinary_src/FileInitInfoJavaLibraryCppM</module>
+        <module>../allbinary_src/PreLoaderFileJavaLibraryCppM</module>
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryCppM</module>
+        <module>../j2me/PCResourceLibraryCppM</module>
+        <module>../j2me/ProgressJ2MEJavaLibraryCppM</module>
+        <module>../allbinary_src/licensing/ClientInfoBaseJavaLibraryCppM</module>
+        <module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryCppM</module>
+        <module>../allbinary_src/licensing/LicenseClientJavaLibraryCppM</module>
+
+        <!--
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryCppM</module>
+        -->
+    </modules>
+
+</project>
+

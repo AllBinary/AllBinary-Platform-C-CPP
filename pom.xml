@@ -30,25 +30,17 @@
 
     <modules>
 
-        <module>../working_thirdpartyjs/embedded/j2me/microemulator/2_0_4/microemu-cldcCpp</module>
-        <module>../working_thirdpartyjs/embedded/j2me/microemulator/2_0_4/microemu-midpCpp</module>
-        <module>../working_thirdpartyjs/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135Cpp</module>
-
         <!--
         -->
-        <module>./j2me/AllBinaryBaseLibraryPOMCpp</module>
-        <module>./j2me/AllBinaryJ2MELibraryCppP</module>
-        <module>./AllBinaryPersistenceLibraryCppP</module>
+        <module>./j2me/AllBinaryBaseLibraryPOCppM</module>
+        <module>./j2me/AllBinaryJ2MELibraryP</module>
+        <module>./AllBinaryPersistenceLibraryP</module>
 
-<!--
-        <module>./automation/InputAutomationToolsCppP</module>
--->
-        <module>./graphics/GraphicsToolsCppP</module>
-        <module>./allbinary_src/FreeblisketJavaLibraryCppP</module>
+        <module>./automation/InputAutomationToolsP</module>
+        <module>./graphics/GraphicsToolsP</module>
+        <module>./allbinary_src/FreeblisketJavaLibraryP</module>
+        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryP</module>
 
-
-        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryCppP</module>
-        
         <!--
         <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryCppM</module>
         <module>./j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryCppM</module>
@@ -59,7 +51,14 @@
 
     </modules>
 
-    <dependencies>
+    <properties>
+        <cygwin.home>G:/cygwin64</cygwin.home>
+        <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
+        <native.c.standard>c17</native.c.standard>
+        <native.cpp.standard>c++17</native.cpp.standard>
+        <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
+    </properties>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

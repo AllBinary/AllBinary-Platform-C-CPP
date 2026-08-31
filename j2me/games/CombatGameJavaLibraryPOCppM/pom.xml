@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>CombatGameJavaLibraryPOMCpp</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>CombatGameJavaLibraryPOMCpp</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+
+        <!--
+
+        -->
+
+        <module>../../games/TickableJavaLibraryCppM</module>
+
+        <module>../../games/CommonHeadsUpDisplayLibraryCppM</module>
+
+        <module>../../../physics/MovementJavaLibraryCppM</module>
+        <!--        -->
+        <module>../../games/PartsJavaLibraryCppM</module>
+        <module>../../games/PickupGameJavaLibraryCppM</module>
+
+        <module>../../../allbinary_src/licensing/HardCodedLicenseInitInfoJavaLibraryCppM</module>
+        <module>../../../allbinary_src/licensing/FileLicenseInitInfoJavaLibraryCppM</module>
+        <module>../../../allbinary_src/licensing/ClientInfoLicensingJavaLibraryCppM</module>
+
+        <module>../../games/licensing/PartnerJ2MEJavaLibraryCppM</module>
+        <module>../../games/licensing/PartnerHTMLJavaLibraryCppM</module>
+        <module>../../games/licensing/PartnerAndroidJavaLibraryCppM</module>
+        <module>../../games/licensing/NoGameLicensingJavaLibraryCppM</module>
+        <module>../../games/licensing/GameLicensingOnlyDemoJavaLibraryCppM</module>
+        <module>../../games/licensing/GameLicensingOnlyNormalJavaLibraryCppM</module>
+        <module>../../games/licensing/GameLicensingBaseJavaLibraryCppM</module>
+
+        <!--
+        <module>../../games/GameScoresBaseLibraryCppM</module>
+        <module>../../games/GameScoresBaseHTMLLibraryCppM</module>
+        <module>../../games/GameScoresBaseJ2MELibraryCppM</module>
+        -->
+        <module>../../games/GameScoresLocalJavaLibraryCppM</module>
+        <module>../../games/GameScoresRemoteAndLocalJavaLibraryCppM</module>
+
+        <module>../../../store/ThirdPartyStoreJavaLibraryCppM</module>
+        <module>../../../store/NoThirdPartyStoreJavaLibraryCppM</module>
+
+        <module>../../media/graphics/layer/CollisionLayerJavaLibraryCppM</module>
+        <module>../../games/CollisionLibraryCppM</module>
+
+        <module>../../games/multiplayer/AllBinaryGameClientBaseNullJavaLibraryCppM</module>
+
+        <module>../../games/PickupLayerJavaLibraryCppM</module>
+
+        <module>../../games/DamageGameJavaLibraryCppM</module>
+        <module>../../games/DropJavaLibraryCppM</module>
+        <module>../../games/WeaponLayerJavaLibraryCppM</module>
+
+        <module>../../games/CombatGameJavaLibraryCppM</module>
+        <module>../../games/LifeJavaLibraryCppM</module>
+
+        <module>../../games/CommonHeadsUpDisplayCombatGameLibraryCppM</module>
+        <module>../../games/LifeOrDeathDataJavaLibraryCppM</module>
+
+        <module>../../games/BasicWeaponPartsJavaLibraryCppM</module>
+        <module>../../games/weapon/WeaponPropertiesJavaLibraryCppM</module>
+
+        <module>../../games/weapon/WeaponMineJavaLibraryCppM</module>
+
+        <!--
+        <module>../../media/graphics/effects/fireworks/FireworksJavaLibraryCppM</module>
+        -->
+
+        <module>../../media/graphics/geography/map/TerrainEventJavaLibraryCppM</module>
+
+<!--
+        <module>../../media/graphics/geography/map/BasicPlatformGeographicMapJavaLibraryCppM</module>
+        -->
+
+        <!--
+        <module>../../media/graphics/geography/map/RaceTrackP</module>
+        -->
+
+        <!--
+        XmlRpcJavaLibrary
+        RemoteXmlRpcJavaLibrary
+
+        Since POMs are built before the other libs is it best to handle this differently
+        ../../
+        <module>../../../../work/j2me/games/strategy/rts/RTSGameJavaLibraryP</module>
+        -->
+
+        <module>../../media/graphics/OtherGraphicsMediaLibraryP</module>
+
+        <module>../../input/NoTouchButtonResourceAnimationJavaLibraryCppM</module>
+        <module>../../input/TouchButtonResourceAnimationJavaLibraryCppM</module>
+        <module>../../input/TouchButtonResourceOpenGLESAnimationJavaLibraryCppM</module>
+
+        <module>../../input/TrackingEventJavaLibraryCppM</module>
+        <module>../../../game/behavior/BehaviorLibraryP</module>
+
+        <module>../../media/sound/OtherSoundMediaLibraryP</module>
+
+        <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibraryCppM</module>
+        <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibraryCppM</module>
+        <module>../../input/AllBinaryMagneticFieldSensorJavaLibraryCppM</module>
+        <module>../../android/VirtualKeyboardJavaLibraryCppM</module>
+
+    </modules>
+
+    <properties>
+        <cygwin.home>G:/cygwin64</cygwin.home>
+        <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
+        <native.c.standard>c17</native.c.standard>
+        <native.cpp.standard>c++17</native.cpp.standard>
+        <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
+    </properties>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+

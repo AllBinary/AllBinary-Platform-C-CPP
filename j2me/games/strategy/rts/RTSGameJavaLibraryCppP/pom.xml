@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary.game.strategy.realtime</groupId>
+    <artifactId>RTSGameJavaLibraryPCpp</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+    <name>RTSGameJavaLibraryPCpp</name>
+    <url>http://maven.apache.org</url>
+
+    <modules>
+
+        <module>../../../../../j2me/games/PreGameSelectionJavaLibraryCppM</module>
+        <module>../../../../../j2me/games/MapSelectionGameJavaLibraryCppM</module>
+
+<!--
+        <module>../../../../../j2me/input/TrackingEventJavaLibraryCppM</module>
+-->
+
+        <module>../RTSGameSoundsJavaLibraryCppM</module>
+
+        <module>../RTSTouchJavaLibraryCppM</module>
+
+        <module>../RTSGameJavaLibraryCppM</module>
+        
+        <module>../AdvancedRTSGameSoundsJavaLibraryCppM</module>
+        
+        <module>../AdvancedRTSGameJavaLibraryCppM</module>
+
+    </modules>
+
+    <properties>
+        <cygwin.home>G:/cygwin64</cygwin.home>
+        <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
+        <native.c.standard>c17</native.c.standard>
+        <native.cpp.standard>c++17</native.cpp.standard>
+        <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
+    </properties>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+
