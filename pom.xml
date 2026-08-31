@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>AllBinaryPlatformPOMCpp</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>AllBinaryPlatformPOMCpp</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+
+        <module>../working_thirdpartyjs/embedded/j2me/microemulator/2_0_4/microemu-cldcCpp</module>
+        <module>../working_thirdpartyjs/embedded/j2me/microemulator/2_0_4/microemu-midpCpp</module>
+        <module>../working_thirdpartyjs/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135Cpp</module>
+
+        <!--
+        -->
+        <module>./j2me/AllBinaryBaseLibraryPOMCpp</module>
+        <module>./j2me/AllBinaryJ2MELibraryCppP</module>
+        <module>./AllBinaryPersistenceLibraryCppP</module>
+
+<!--
+        <module>./automation/InputAutomationToolsCppP</module>
+-->
+        <module>./graphics/GraphicsToolsCppP</module>
+        <module>./allbinary_src/FreeblisketJavaLibraryCppP</module>
+
+
+        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryCppP</module>
+        
+        <!--
+        <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryCppM</module>
+        <module>./j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryCppM</module>
+        -->
+        <module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryCppM</module>
+        <module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryCppM</module>
+        <module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibraryCppM</module>
+
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+

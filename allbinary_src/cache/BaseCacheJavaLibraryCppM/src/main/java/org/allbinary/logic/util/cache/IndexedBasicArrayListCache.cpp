@@ -1,0 +1,172 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsConstructor.h>
+
+      
+#include <jsinterop/annotations/JsProperty.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "BaseBasicArrayListCache.h"
+#include "CacheInterface.h"
+#include "CacheableInterface.h"
+
+class IndexedBasicArrayListCache: public BaseBasicArrayListCache: public CacheInterface {
+        
+
+                //@Throws(Exception.constructor)
+            
+    public static IndexedBasicArrayListCache createCache(int32_t size){
+
+    indexedBasicArrayListCache: IndexedBasicArrayListCache = new IndexedBasicArrayListCache();;
+    
+indexedBasicArrayListCache!.init(size);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return indexedBasicArrayListCache;
+    
+}
+
+
+    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+
+    private: size: int32_t = 0;
+
+    index: int32_t = 0;
+
+public constructor (){
+
+            super();
+        }
+
+
+                //@Throws(Exception.constructor)
+            
+    public init(int32_t size){
+
+                        if(this.size < size)
+                        
+                                    {
+                                    this.list.ensureCapacity(size);
+    
+
+
+
+
+                        for (
+    index: int32_t = size -1;index >= this.size; index--)
+        {
+this.addDefault();
+    
+}
+
+this.size= size;
+    
+
+                                    }
+                                
+}
+
+
+    public any getAt(int32_t index){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.list.objectArray[index]!;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public addDefault(){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public addObject(Object anyType){
+this.list.add(anyType);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public add(CacheableInterface cacheableInterface){
+this.list.add(cacheableInterface);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public addArray(std::vector<CacheableInterface> cacheableInterfaces){
+
+
+
+                            throw new Exception("No Imple");
+                    
+}
+
+
+    public clear(){
+this.index= 0;
+    
+}
+
+
+};
+
+            
+

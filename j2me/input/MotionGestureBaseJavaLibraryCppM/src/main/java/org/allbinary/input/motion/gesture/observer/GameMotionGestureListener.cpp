@@ -1,0 +1,252 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
+
+      
+#include <org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>
+
+      
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "MotionGestureEventListener.h"
+#include "CompleteMotionGestureListenerInterface.h"
+#include "MotionGestureEvent.h"
+
+class GameMotionGestureListener
+            : public Object
+        : public MotionGestureEventListener {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+
+    private: motionGestureCollection: BasicArrayList = new BasicArrayListD();
+
+    private: touchGestureCollection: BasicArrayList = new BasicArrayListD();
+
+    private: scrolledGestureCollection: BasicArrayList = new BasicArrayListD();
+
+    private: signed: CompleteMotionGestureListenerInterface;
+
+public constructor (CompleteMotionGestureListenerInterface signed){
+
+            super();
+        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+    
+this.signed= signed;
+    
+}
+
+
+    public onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    
+}
+
+
+    public onUpMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onDownMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onLeftMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onRightMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev){
+this.onMotionGestureEvent(ev);
+    
+}
+
+
+    public onPressedMotionGestureEvent(MotionGestureEvent ev){
+this.touchGestureCollection!.add(ev.getMotionGesture());
+    
+}
+
+
+    public released(MotionGestureEvent ev){
+
+        try {
+            this.touchGestureCollection!.add(ev.getMotionGesture());
+    
+this.signed.onMotionGestureCompleted(this.touchGestureCollection);
+    
+this.touchGestureCollection!.clear();
+    
+
+                //: 
+} catch(e) 
+            {
+
+    stringBuffer: StringMaker = new StringMaker();;
+    
+stringBuffer!.append(this.commonStrings!.EXCEPTION_LABEL);
+    
+stringBuffer!.append(StringUtil.getInstance()!.toString(ev.getMotionGesture()));
+    
+this.logUtil!.put(stringBuffer!.toString(), this, "release", e);
+    
+}
+
+}
+
+
+    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+}
+
+
+    public onMotionGestureEvent(MotionGestureEvent ev){
+
+        try {
+            
+    motionGestureInput: MotionGestureInput = ev.getMotionGesture()!;;
+    
+
+                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.PRESSED)
+                        
+                                    {
+                                    this.onPressedMotionGestureEvent(ev);
+    
+
+                                    }
+                                
+                             else 
+                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.RELEASED)
+                        
+                                    {
+                                    this.released(ev);
+    
+
+                                    }
+                                
+                        else {
+                            this.motionGestureCollection!.add(motionGestureInput);
+    
+this.signed.onMotionGestureCompleted(this.motionGestureCollection);
+    
+this.motionGestureCollection!.clear();
+    
+this.touchGestureCollection!.clear();
+    
+
+                        }
+                            
+
+                //: 
+} catch(e) 
+            {
+
+    stringBuffer: StringMaker = new StringMaker();;
+    
+stringBuffer!.append(this.commonStrings!.EXCEPTION_LABEL);
+    
+stringBuffer!.append(StringUtil.getInstance()!.toString(ev.getMotionGesture()));
+    
+this.logUtil!.put(stringBuffer!.toString(), this, "onMotionGestureEvent", e);
+    
+}
+
+}
+
+
+};
+
+            
+

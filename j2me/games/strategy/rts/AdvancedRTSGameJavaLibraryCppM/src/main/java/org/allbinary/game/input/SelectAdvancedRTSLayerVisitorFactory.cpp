@@ -1,0 +1,84 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2006 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <org/allbinary/logic/util/visitor/Visitor.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "SelectRTSLayerVisitorFactoryInterface.h"
+#include "SelectAdvancedRTSLayerVisitor.h"
+#include "SelectedRTSLayersPlayerGameInput.h"
+
+class SelectAdvancedRTSLayerVisitorFactory
+            : public Object
+        : public SelectRTSLayerVisitorFactoryInterface {
+        
+
+    private: static const instance: SelectAdvancedRTSLayerVisitorFactory = new SelectAdvancedRTSLayerVisitorFactory();
+
+    public static SelectAdvancedRTSLayerVisitorFactory getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return SelectAdvancedRTSLayerVisitorFactory.instance;
+    
+}
+
+
+private constructor (){
+
+            super();
+        }
+
+
+    public Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new SelectAdvancedRTSLayerVisitor(selectedRTSLayersPlayerGameInput);
+    
+}
+
+
+};
+
+            
+

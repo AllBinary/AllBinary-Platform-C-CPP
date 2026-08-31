@@ -1,0 +1,142 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatistics.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsInterface.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatistics.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsInterface.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatistics.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatistics.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "StoreFrontStatisticsInterface.h"
+
+class RealTimeStoreFrontStatistics
+            : public Object
+        : public StoreFrontStatisticsInterface {
+        
+
+    private: storeFrontAdvertisementsStatisticsInterface: StoreFrontAdvertisementsStatisticsInterface;
+
+    private: storeFrontUsersStatisticsInterface: StoreFrontUsersStatisticsInterface;
+
+    private: storeFrontInventoryStatisticsInterface: StoreFrontInventoryStatisticsInterface;
+
+    private: storeFrontOrderHistoryStatisticsInterface: StoreFrontOrdersHistoryStatisticsInterface;
+
+public constructor (StoreFrontInterface storeFrontInterface){
+
+            super();
+        this.storeFrontAdvertisementsStatisticsInterface= new StoreFrontAdvertisementsStatistics(storeFrontInterface) as StoreFrontAdvertisementsStatisticsInterface;
+    
+this.storeFrontUsersStatisticsInterface= new StoreFrontUsersStatistics(storeFrontInterface) as StoreFrontUsersStatisticsInterface;
+    
+this.storeFrontInventoryStatisticsInterface= new StoreFrontInventoryStatistics(storeFrontInterface) as StoreFrontInventoryStatisticsInterface;
+    
+this.storeFrontOrderHistoryStatisticsInterface= new StoreFrontOrdersHistoryStatistics(storeFrontInterface) as StoreFrontOrdersHistoryStatisticsInterface;
+    
+}
+
+
+    public StoreFrontAdvertisementsStatisticsInterface getAdvertisements(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.storeFrontAdvertisementsStatisticsInterface;
+    
+}
+
+
+    public StoreFrontUsersStatisticsInterface getUsers(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.storeFrontUsersStatisticsInterface;
+    
+}
+
+
+    public StoreFrontInventoryStatisticsInterface getInventory(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.storeFrontInventoryStatisticsInterface;
+    
+}
+
+
+    public StoreFrontOrdersHistoryStatisticsInterface getOrders(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.storeFrontOrderHistoryStatisticsInterface;
+    
+}
+
+
+};
+
+            
+

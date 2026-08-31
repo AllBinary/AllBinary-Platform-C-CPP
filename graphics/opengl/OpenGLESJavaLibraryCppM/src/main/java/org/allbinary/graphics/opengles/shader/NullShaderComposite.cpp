@@ -1,0 +1,93 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2025 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+#include <javax/microedition/khronos/opengles/GL10.h>
+
+      
+#include <org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h>
+
+      
+#include <org/allbinary/graphics/opengles/OpenGLCapabilities.h>
+
+      
+#include <org/allbinary/graphics/opengles/OpenGLProcessor.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "ShaderComposite.h"
+#include "Shader.h"
+#include "CompositeShaderUpdater.h"
+#include "ShaderInitializer.h"
+#include "ModelViewProjection.h"
+
+class NullShaderComposite: public ShaderComposite {
+        
+
+    private: static const instance: NullShaderComposite = new class extends NullShaderComposite
+                                {
+                                
+    public init(GL10 gl){
+}
+
+                                }
+                            ;
+
+    public static ShaderComposite getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullShaderComposite.instance;
+    
+}
+
+
+public constructor (string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor){
+            super(requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, disableProgramShaderOpenGLProcessor);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.useProgramShaderOpenGLProcessor= NullOpenGLProcessorFactory.getInstance();
+    
+}
+
+
+};
+
+            
+

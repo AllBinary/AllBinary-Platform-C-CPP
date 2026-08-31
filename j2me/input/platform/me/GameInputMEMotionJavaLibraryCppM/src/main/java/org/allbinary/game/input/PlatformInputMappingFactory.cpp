@@ -1,0 +1,110 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+            #include "../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "MotionJ2MEGameInputMapping.h"
+
+class PlatformInputMappingFactory
+            : public Object
+         {
+        
+
+    private: static const instance: PlatformInputMappingFactory = new PlatformInputMappingFactory();
+
+    public static PlatformInputMappingFactory getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PlatformInputMappingFactory.instance;
+    
+}
+
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: inputToGameKeyMapping: PersistentInputMapping = PersistentInputMapping.getNullInstance()!;
+
+    public PersistentInputMapping getPersistentInputMappingInstance(){
+
+        try {
+            
+                        if(this.inputToGameKeyMapping == PersistentInputMapping.getNullInstance())
+                        
+                                    {
+                                    this.inputToGameKeyMapping= new MotionJ2MEGameInputMapping();
+    
+
+                                    }
+                                
+
+                //: 
+} catch(e) 
+            {
+
+    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    
+this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.inputToGameKeyMapping;
+    
+}
+
+
+};
+
+            
+

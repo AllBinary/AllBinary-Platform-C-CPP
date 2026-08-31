@@ -1,0 +1,55 @@
+
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "CompleteMotionGestureInputEventListenerInterface.h"
+#include "CompleteMotionGestureInputEvent.h"
+
+class CompleteMotionGestureInputEventListener
+            : public Object
+        : public CompleteMotionGestureInputEventListenerInterface {
+        
+
+    public onEvent(AllBinaryEventObject eventObject){
+}
+
+
+    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+}
+
+
+};
+
+            
+

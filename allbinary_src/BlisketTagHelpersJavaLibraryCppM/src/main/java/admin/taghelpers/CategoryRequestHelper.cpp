@@ -1,0 +1,673 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Map.h>
+
+      
+#include <java/util/Set.h>
+
+      
+#include <javax/servlet/http/HttpServletRequest.h>
+
+      
+#include <javax/servlet/jsp/PageContext.h>
+
+      
+#include <org/allbinary/business/category/CategoryComponent.h>
+
+      
+#include <org/allbinary/business/category/CategoryData.h>
+
+      
+#include <org/allbinary/business/category/CategoryInterface.h>
+
+      
+#include <org/allbinary/business/category/store/StoreCategoryFactory.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+
+      
+#include <org/allbinary/data/tree/category/CategoryLoaderFactory.h>
+
+      
+#include <org/allbinary/data/tree/category/CategoryLoaderInterface.h>
+
+      
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoBasic.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/w3c/dom/Document.h>
+
+      
+#include <org/w3c/dom/Node.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "ModifyTable.h"
+
+class CategoryRequestHelper: public ModifyTable {
+        
+
+    private: static const categoryRequest: string = new StringMaker().append("<")!.append(CategoryData.getInstance()!.REQUEST)!.append(">")!.toString()!;
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: pageContext: PageContext;
+
+    private: hashMap: HashMap<any, any>;
+
+    private: request: HttpServletRequest;
+
+    private: categoryLoaderInterface: CategoryLoaderInterface;
+
+    private: categoryInterface: CategoryInterface;
+
+    private: childCategoryInterface: CategoryInterface;
+
+    private: transformInfoInterface: TransformInfoInterface;
+
+public constructor (HashMap<any, any> hashMap, PageContext pageContext){
+
+            super();
+        
+        try {
+            this.request= pageContext!.getRequest() as HttpServletRequest;
+    
+this.pageContext= pageContext;
+    
+this.hashMap= hashMap;
+    
+this.getXmlData();
+    
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "CategoryRequestHelper()", e);
+    
+
+                                    }
+                                
+}
+
+}
+
+
+    public getXmlData(){
+
+        try {
+            
+    map: Map = this.request.getParameterMap()!;;
+    
+
+    categoryData: CategoryData = CategoryData.getInstance()!;;
+    
+
+    keys: Set = map.keySet()!;;
+    
+
+    keyArray: std::vector<any> = keys.toArray()!;;
+    
+
+    size: int32_t = keyArray!.length
+                ;;
+    
+
+                        if(size > 0)
+                        
+                                    {
+                                    
+    xmlRequest: string = keyArray[0]! as string;;
+    
+
+    index: int32_t = 1;;
+    
+
+        while(index < size && !xmlRequest!.startsWith(CategoryRequestHelper.categoryRequest))
+        {
+xmlRequest= keyArray[index]! as string;
+    
+
+                        if(xmlRequest!.startsWith(CategoryRequestHelper.categoryRequest))
+                        
+                                    //Otherwise - thenStmt - BreakStmt
+
+}
+
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        
+                                    {
+                                    this.logUtil!.putF(xmlRequest, this, "getXmlData()");
+    
+
+                                    }
+                                
+
+    document: Document = DomDocumentHelper.create(xmlRequest)!;;
+    
+
+    requestNode: Node = DomSearchHelper.getNode(categoryData!.REQUEST, document.getChildNodes())!;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        
+                                    {
+                                    this.logUtil!.putF(DomDocumentHelper.toString(document), this, "getXmlData()");
+    
+
+                                    }
+                                
+this.setCategoryLoader(requestNode);
+    
+
+    parentCategoryNode: Node = DomSearchHelper.getNode(categoryData!.PARENT, requestNode!.getChildNodes())!;;
+    
+
+    categoryNode: Node = DomSearchHelper.getNode(categoryData!.NAME, parentCategoryNode!.getChildNodes())!;;
+    
+this.categoryInterface= new StoreCategoryFactory(this.transformInfoInterface).getRootInstanceFromNode(categoryNode) as CategoryInterface;
+    
+this.categoryInterface= this.categoryLoaderInterface!.get(this.categoryInterface);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        
+                                    {
+                                    this.categoryInterface!.log();
+    
+this.logUtil!.putF("Loaded Parent Category", this, "getXmlData()");
+    
+
+                                    }
+                                
+
+    childCategoryNode: Node = DomSearchHelper.getNodeNoThrow(categoryData!.NAME, requestNode!.getChildNodes())!;;
+    
+
+                        if(childCategoryNode != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        
+                                    {
+                                    this.logUtil!.putF("Loading Child Category", this, "getXmlData()");
+    
+
+                                    }
+                                
+this.childCategoryInterface= new StoreCategoryFactory(this.transformInfoInterface).getInstance(childCategoryNode) as CategoryInterface;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        
+                                    {
+                                    this.childCategoryInterface!.log();
+    
+this.logUtil!.putF("Loaded Child Category", this, "getXmlData()");
+    
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            this.childCategoryInterface= this.categoryInterface;
+    
+
+                        }
+                            
+
+                                    }
+                                
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        
+                                    {
+                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "getXmlData()", e);
+    
+
+                                    }
+                                
+}
+
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    setCategoryLoader(Node requestNode){
+
+    storeNameNode: Node = DomSearchHelper.getNode(StoreFrontData.getInstance()!.NAME, requestNode!.getChildNodes())!;;
+    
+
+                        if(storeNameNode != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    storeName: string = DomNodeHelper.getTextNodeValue(storeNameNode)!;;
+    
+
+                        if(storeName != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(storeName)!;;
+    
+this.transformInfoInterface= new TransformInfoBasic(storeFrontInterface, this.hashMap, this.pageContext) as TransformInfoInterface;
+    
+
+                        if(this.transformInfoInterface == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+
+
+                            throw new Exception("TransformInfo null");
+                    
+
+                                    }
+                                
+
+    storeCategoryFactory: StoreCategoryFactory = new StoreCategoryFactory(this.transformInfoInterface);;
+    
+this.categoryLoaderInterface= CategoryLoaderFactory.getInstance(storeCategoryFactory);
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                            throw new Exception("Store Name Error: " +storeName);
+                    
+
+                        }
+                            
+
+                                    }
+                                
+}
+
+
+    public string insert(){
+
+        try {
+            
+    success: string = "Successfully Added the following to the Category table";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF("inserting", this, "insert()");
+    
+
+                                    }
+                                
+this.categoryLoaderInterface!.insert(this.categoryInterface, this.childCategoryInterface);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF(success, this, "insert()");
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return success;
+    
+
+                //: 
+} catch(e) 
+            {
+
+    error: string = "Failed to add item to Category";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "insert()", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return error;
+    
+}
+
+}
+
+
+    public string delete(){
+
+        try {
+            
+    success: string = "Successfully Removed " +CategoryData.getInstance()!.NAME +"=" +this.childCategoryInterface!.getPath();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF("Deleting", this, "delete()");
+    
+
+                                    }
+                                
+this.categoryLoaderInterface!.delete(this.categoryInterface, this.childCategoryInterface);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF(success, this, "delete()");
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return success;
+    
+
+                //: 
+} catch(e) 
+            {
+
+        try {
+            
+    error: string = "Failed to remove category: " +this.childCategoryInterface!.getPath();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return error;
+    
+
+                //: 
+} catch(e2) 
+            {
+
+    error: string = "Failed to remove category and show the path of the failed category";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e2);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return error;
+    
+}
+
+}
+
+}
+
+
+    public string viewCategory(){
+
+        try {
+            
+    document: Document = new CategoryComponent(this.childCategoryInterface).toXmlDoc()!;;
+    
+
+    xmlString: string = DomDocumentHelper.toString(document)!;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF(xmlString, this, "viewCategory()");
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return xmlString;
+    
+
+                //: 
+} catch(e) 
+            {
+
+    error: string = "Failed to get Category";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "viewCategory()", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return error;
+    
+}
+
+}
+
+
+    public string viewCategories(){
+
+        try {
+            
+    success: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF(success, this, "viewCategories()");
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return success;
+    
+
+                //: 
+} catch(e) 
+            {
+
+    error: string = "Failed to view Categories table";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "viewCategories()", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return error;
+    
+}
+
+}
+
+
+    public string update(){
+
+        try {
+            
+    success: string = "New Item Successfully added";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        
+                                    {
+                                    this.logUtil!.putF(success, this, "update()");
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return success;
+    
+
+                //: 
+} catch(e) 
+            {
+
+    error: string = "Failed to add Item";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return error;
+    
+}
+
+}
+
+
+};
+
+            
+

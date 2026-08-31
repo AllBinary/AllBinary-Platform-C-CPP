@@ -1,0 +1,106 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+            #include "../../../../java/lang/Exception.h"
+        
+#include <javax/microedition/lcdui/Image.h>
+
+      
+#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class ImageCreationUtil
+            : public Object
+         {
+        
+
+    private: static const instance: ImageCreationUtil = new ImageCreationUtil();
+
+    public static ImageCreationUtil getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ImageCreationUtil.instance;
+    
+}
+
+
+private constructor (){
+
+            super();
+        }
+
+
+                //@Throws(Exception.constructor)
+            
+    public Image createImageWH(int32_t width, int32_t height){
+
+    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(this.constructor.name.toString()!, width, height)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return image;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
+
+    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(this.constructor.name.toString()!, static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return image;
+    
+}
+
+
+};
+
+            
+

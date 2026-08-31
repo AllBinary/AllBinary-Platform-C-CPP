@@ -1,0 +1,306 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2025 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <java/io/IOException.h>
+
+      
+#include <javax/sound/sampled/AudioFormat.h>
+
+      
+#include <javax/sound/sampled/AudioInputStream.h>
+
+      
+#include <javax/sound/sampled/BooleanControl.h>
+
+      
+#include <javax/sound/sampled/Clip.h>
+
+      
+#include <javax/sound/sampled/Control.h>
+
+      
+#include <javax/sound/sampled/Control/Type.h>
+
+      
+#include <javax/sound/sampled/Line/Info.h>
+
+      
+#include <javax/sound/sampled/LineListener.h>
+
+      
+#include <javax/sound/sampled/LineUnavailableException.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "NullJ2SEControl.h"
+#include "NullAudioFormat.h"
+
+class NullClip
+            : public Object
+        : public Clip {
+        
+
+    public static const NULL_CONTROL: NullJ2SEControl = new NullJ2SEControl(BooleanControl.Type.MUTE);
+
+                //@Throws(LineUnavailableException.constructor)
+            
+    public open(AudioFormat format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize){
+}
+
+
+                //@Throws(LineUnavailableException.constructor, IOException.constructor)
+            
+    public open(AudioInputStream stream){
+}
+
+
+    public int32_t getFrameLength(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public int64_t getMicrosecondLength(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public setFramePosition(int32_t frames){
+}
+
+
+    public setMicrosecondPosition(int64_t microseconds){
+}
+
+
+    public setLoopPoints(int32_t start, int32_t end){
+}
+
+
+    public loop(int32_t count){
+}
+
+
+    public drain(){
+}
+
+
+    public flush(){
+}
+
+
+    public start(){
+}
+
+
+    public stop(){
+}
+
+
+    public bool isRunning(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    public bool isActive(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    public AudioFormat getFormat(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullAudioFormat.NULL_AUDIO_FORMAT;
+    
+}
+
+
+    public int32_t getBufferSize(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public int32_t available(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public int32_t getFramePosition(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public int64_t getLongFramePosition(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public int64_t getMicrosecondPosition(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public float getLevel(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0.0;
+    
+}
+
+
+    public Info getLineInfo(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new Info(this.constructor, NullAudioFormat.NULL_AUDIO_FORMAT);
+    
+}
+
+
+                //@Throws(LineUnavailableException.constructor)
+            
+    public open(){
+}
+
+
+    public close(){
+}
+
+
+    public bool isOpen(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    public std::vector<Control> getControls(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return [];
+    
+}
+
+
+    public bool isControlSupported(Type control){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    public Control getControl(Type control){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullClip.NULL_CONTROL;
+    
+}
+
+
+    public addLineListener(LineListener listener){
+}
+
+
+    public removeLineListener(LineListener listener){
+}
+
+
+};
+
+            
+

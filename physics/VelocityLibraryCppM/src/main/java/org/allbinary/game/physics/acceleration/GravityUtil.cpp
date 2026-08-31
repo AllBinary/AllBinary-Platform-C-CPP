@@ -1,0 +1,75 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../java/lang/Object.h"
+        
+#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class GravityUtil
+            : public Object
+         {
+        
+
+    private: static const instance: GravityUtil = new GravityUtil();
+
+    public static GravityUtil getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GravityUtil.instance;
+    
+}
+
+
+    public const GAME_GRAVITY_VELOCITY: int32_t = 1800;
+
+    public const MAX_GAME_VELOCITY: int32_t = 18000;
+
+    public process(BasicVelocityProperties velocityProperties, int32_t customGravity){
+velocityProperties!.getVelocityYBasicDecimalP()!.addint(customGravity);
+    
+}
+
+
+};
+
+            
+

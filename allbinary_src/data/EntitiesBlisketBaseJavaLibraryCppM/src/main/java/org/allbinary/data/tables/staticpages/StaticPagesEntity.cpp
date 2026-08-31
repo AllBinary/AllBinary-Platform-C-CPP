@@ -1,0 +1,196 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2011 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+
+      
+#include <org/allbinary/business/init/db/StaticPagesDbInitInfo.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+
+      
+#include <org/allbinary/logic/control/search/SearchData.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/string/CommonSeps.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "StaticPagesEntityInterface.h"
+
+class StaticPagesEntity: public AbSqlBean: public StaticPagesEntityInterface {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const TABLENAME: string = "staticpages";
+
+public constructor (){
+            super(new StaticPagesDbInitInfo());
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.setTableName(this.TABLENAME);
+    
+}
+
+
+    public insert(Vector values){
+
+        try {
+            super.insert(values);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        
+                                    {
+                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+    
+
+                                    }
+                                
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+    
+
+                                    }
+                                
+}
+
+}
+
+
+    public string getFile(string store, string keywords){
+
+    whereHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    
+whereHashMap!.put(StoreFrontData.getInstance()!.NAME, store);
+    
+whereHashMap!.put(BasicItemData.KEYWORDS, keywords);
+    
+
+    file: string = super.getField(whereHashMap, SearchData.PAGE)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return file;
+    
+}
+
+
+    public delete(string keywords){
+super.deleteWhere(BasicItemData.KEYWORDS, keywords);
+    
+}
+
+
+    public string dropTable(){
+
+    returnStr: string = super.dropTable()!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return returnStr;
+    
+}
+
+
+    public update(HashMap<any, any> updatedValues){
+super.updateWhere(BasicItemData.KEYWORDS, updatedValues!.get(BasicItemData.KEYWORDS) as string, updatedValues);
+    
+}
+
+
+    public string createTableStatement(){
+
+    stringBuffer: StringMaker = new StringMaker();;
+    
+stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(TABLENAME)!.append(this.sqlStrings!.START)!.append(StoreFrontData.getInstance()!.NAME)!.append(this.sqlTypeStrings!.SIXTY_CHAR_COLUMN_NOT_NULL)!.append(BasicItemData.KEYWORDS)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(SearchData.PAGE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(StoreFrontData.getInstance()!.NAME)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.append(BasicItemData.KEYWORDS)!.append(this.sqlStrings!.END);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!.toString();;
+    
+}
+
+
+    public string createTable(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.createTable(this.createTableStatement());;
+    
+}
+
+
+};
+
+            
+

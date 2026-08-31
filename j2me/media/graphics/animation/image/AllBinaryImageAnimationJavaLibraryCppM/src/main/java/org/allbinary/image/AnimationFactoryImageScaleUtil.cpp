@@ -1,0 +1,180 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2022 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../java/lang/Object.h"
+        
+            #include "../../../java/lang/Exception.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <javax/microedition/lcdui/Image.h>
+
+      
+#include <org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h>
+
+      
+#include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
+
+      
+#include <org/allbinary/media/ScaleProperties.h>
+
+      
+#include <org/allbinary/media/image/ImageJ2MEScaleUtil.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class AnimationFactoryImageScaleUtil
+            : public Object
+         {
+        
+
+    private: static const instance: AnimationFactoryImageScaleUtil = new AnimationFactoryImageScaleUtil();
+
+    public static AnimationFactoryImageScaleUtil getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AnimationFactoryImageScaleUtil.instance;
+    
+}
+
+
+    private: const imageScaleUtil: ImageJ2MEScaleUtil = ImageJ2MEScaleUtil.getInstance()!;
+
+                //@Throws(Exception.constructor)
+            
+    public Image createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
+
+    scaledImage: Image;;
+    
+
+                        if(scaleWidth != 0 && scaleHeight != 0)
+                        
+                                    {
+                                    
+    scaleX: float = (scaleWidth) /(width);;
+    
+
+    scaleY: float = (scaleHeight) /(height);;
+    
+
+                        if((scaleX == 1.0 && scaleY == 1.0) || (scaleX == 0.0 || scaleY == 0.0))
+                        
+                                    {
+                                    scaledImage= image;
+    
+
+                                    }
+                                
+                        else {
+                            scaledImage= this.imageScaleUtil!.scale(image, static_cast<int32_t>((scaleX *width)), static_cast<int32_t>((scaleY *height)));
+    
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            scaledImage= image;
+    
+
+                        }
+                            
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return scaledImage;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public processAdjust(BaseImageAnimationFactory baseImageAnimationFactory){
+
+    scaleProperties: ScaleProperties = baseImageAnimationFactory!.getScalePropertiesP()!;;
+    
+
+                        if(scaleProperties!.scaleWidth != 0 && scaleProperties!.scaleHeight != 0)
+                        
+                                    {
+                                    
+    animationFactoryInitializationVisitor: AnimationFactoryInitializationVisitor = baseImageAnimationFactory!.getAnimationFactoryInitializationVisitorP()!;;
+    
+
+    scaleX: float = (scaleProperties!.scaleWidth) /(animationFactoryInitializationVisitor!.width);;
+    
+
+    scaleY: float = (scaleProperties!.scaleHeight) /(animationFactoryInitializationVisitor!.height);;
+    
+
+                        if((scaleX == 1.0 && scaleY == 1.0) || (scaleX == 0.0 || scaleY == 0.0))
+                        
+                                    {
+                                    
+                                    }
+                                
+                        else {
+                            animationFactoryInitializationVisitor!.dx= static_cast<int32_t>((animationFactoryInitializationVisitor!.originalDx *scaleX));
+    
+animationFactoryInitializationVisitor!.dy= static_cast<int32_t>((animationFactoryInitializationVisitor!.originalDy *scaleY));
+    
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            
+                        }
+                            
+}
+
+
+};
+
+            
+

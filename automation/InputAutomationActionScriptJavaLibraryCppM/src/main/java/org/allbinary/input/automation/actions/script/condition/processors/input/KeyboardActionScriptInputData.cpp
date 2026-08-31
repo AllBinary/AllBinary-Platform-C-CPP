@@ -1,0 +1,66 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../../../../java/lang/Object.h"
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class KeyboardActionScriptInputData
+            : public Object
+         {
+        
+
+    public static NAME: string = "KEY_ACTION_INPUT_NAME";
+
+    public static KEY: string = "KEY_ACTION_INPUT_KEY";
+
+    public static DELAY_BETWEEN_KEYS: string = "KEY_ACTION_INPUT_DELAY_BETWEEN_KEYS";
+
+    public static PRESS: string = "KEY_ACTION_INPUT_PRESS";
+
+    public static RELEASE: string = "KEY_ACTION_INPUT_RELEASE";
+
+private constructor (){
+
+            super();
+        }
+
+
+};
+
+            
+

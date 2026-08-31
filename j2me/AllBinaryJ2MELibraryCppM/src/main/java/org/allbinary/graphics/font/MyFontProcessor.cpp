@@ -1,0 +1,98 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2025 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <javax/microedition/lcdui/Font.h>
+
+      
+#include <javax/microedition/lcdui/Graphics.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class MyFontProcessor
+            : public Object
+         {
+        
+
+    public static int32_t defaultCharWidth(Font font){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return font.charWidth('C');;
+    
+}
+
+
+    public static int32_t defaultStringWidth(Font font, int32_t size){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return MyFontProcessor.defaultCharWidth(font) *size;
+    
+}
+
+
+    private: static const instance: MyFontProcessor = new MyFontProcessor();
+
+    public static MyFontProcessor getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return instance;
+    
+}
+
+
+    public process(Graphics graphics){
+}
+
+
+};
+
+            
+

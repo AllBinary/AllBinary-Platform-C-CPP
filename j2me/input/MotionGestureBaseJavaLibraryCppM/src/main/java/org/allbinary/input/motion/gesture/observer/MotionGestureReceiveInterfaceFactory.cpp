@@ -1,0 +1,89 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Object.h"
+        
+#include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>
+
+      
+#include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "ResolveCompleteMotionGestureListener.h"
+#include "NullCompleteMotionGestureReceiver.h"
+#include "CompleteMotionGestureListenerInterface.h"
+
+class MotionGestureReceiveInterfaceFactory
+            : public Object
+         {
+        
+
+    public static CompleteMotionGestureListenerInterface getInstance(){
+
+    configuration: MotionGestureConfiguration = MotionGestureConfigurationFactory.getInstance()!;;
+    
+
+                        if(!configuration.isExecutingActionsAllowed())
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new NullCompleteMotionGestureReceiver();
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new ResolveCompleteMotionGestureListener();
+    
+
+                        }
+                            
+}
+
+
+};
+
+            
+

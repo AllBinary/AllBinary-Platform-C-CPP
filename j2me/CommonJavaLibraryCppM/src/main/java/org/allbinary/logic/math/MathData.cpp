@@ -1,0 +1,97 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2011 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <org/allbinary/string/CommonPhoneStrings.h>
+
+      
+#include <org/allbinary/string/CommonSeps.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class MathData
+            : public Object
+         {
+        
+
+    private: static const instance: MathData = new MathData();
+
+    public static MathData getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return MathData.instance;
+    
+}
+
+
+    public const EQUALS: string;
+
+    public const PLUS: string = "+";
+
+    public const GREATER_THAN: string = ">";
+
+    public const MINUS: string;
+
+    public const DIVIDE: string;
+
+    public const MULTIPLY: string;
+
+private constructor (){
+
+            super();
+        
+    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    
+this.EQUALS= commonSeps!.EQUALS;
+    
+this.MINUS= commonSeps!.DASH;
+    
+this.DIVIDE= commonSeps!.FORWARD_SLASH;
+    
+this.MULTIPLY= CommonPhoneStrings.getInstance()!.STAR;
+    
+}
+
+
+};
+
+            
+

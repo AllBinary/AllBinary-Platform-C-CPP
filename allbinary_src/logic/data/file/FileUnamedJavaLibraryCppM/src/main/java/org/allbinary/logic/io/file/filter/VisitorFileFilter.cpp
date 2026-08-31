@@ -1,0 +1,108 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Object.h"
+        
+#include <java/io/File.h>
+
+      
+#include <java/io/FileFilter.h>
+
+      
+#include <org/allbinary/logic/io/file/AbFile.h>
+
+      
+#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
+
+      
+#include <org/allbinary/logic/util/visitor/VisitorInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class VisitorFileFilter
+            : public Object
+        : public FileFilter {
+        
+
+    private: booleanVisitorInterface: VisitorInterface;
+
+public constructor (VisitorInterface booleanVisitorInterface){
+
+            super();
+        this.booleanVisitorInterface= booleanVisitorInterface;
+    
+}
+
+
+    public bool accept(File file){
+
+    abFile: AbFile = FileWrapperUtil.wrapFile(file)!;;
+    
+
+    isFileAcceptable: bool = visit = this.booleanVisitorInterface!.visit(abFile)visit as Boolean
+visit.
+                    .valueOf()!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return isFileAcceptable || file.isDirectory();
+    
+}
+
+
+    public bool accept(AbFile file){
+
+    isFileAcceptable: bool = visit = this.booleanVisitorInterface!.visit(file)visit as Boolean
+visit.
+                    .valueOf()!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return isFileAcceptable || file.isDirectory();
+    
+}
+
+
+};
+
+            
+

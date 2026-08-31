@@ -1,0 +1,198 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot   
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+            #include "../../../../java/lang/Exception.h"
+        
+            #include "../../../../java/lang/System.h"
+        
+#include <java/io/InputStream.h>
+
+      
+#include <javax/microedition/media/Player.h>
+
+      
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "Sounds.h"
+#include "SoundsFactoryInterface.h"
+#include "NoPlayer.h"
+//NotDeviceSpecificNoMediaMIDP1Library
+class AllBinaryMediaManager
+            : public Object
+         {
+        
+
+    private: static const THIS: string = "AllBinaryMediaManagerNoMediaMIDP1";
+
+    public static bool isMuted(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    public static setMuted(bool aMuted){
+}
+
+
+    public static bool update(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public static init(SoundsFactoryInterface soundsFactoryInterface){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, commonString!.INIT);
+    
+ProgressCanvasFactory.getInstance()!.addNormalPortion(50, "Media Manager");
+    
+new Sounds(soundsFactoryInterface).init();
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public static shutdown(SoundsFactoryInterface soundsFactoryInterface){
+new Sounds(soundsFactoryInterface).stopAll();
+    
+new Sounds(soundsFactoryInterface).closeAll();
+    
+System.gc();
+    
+}
+
+
+    public static Player createPlayerFromInputStream(InputStream stream, string type){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "creatPlayer(InputStream)");
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NoPlayer.NO_PLAYER as Player;
+    
+}
+
+
+    public static Player createPlayer(string locator){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "creatPlayer(locator)");
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NoPlayer.NO_PLAYER as Player;
+    
+}
+
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static playTone(int32_t frequency, int32_t time, int32_t volume){
+}
+
+
+    public static std::vector<string> getSupportedContentTypes(string protocol){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil.getInstance()!.getArrayInstance();;
+    
+}
+
+
+    public static std::vector<string> getSupportedProtocols(string content_type){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil.getInstance()!.getArrayInstance();;
+    
+}
+
+
+private constructor (){
+
+            super();
+        }
+
+
+};
+
+            
+

@@ -1,0 +1,106 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../java/lang/Object.h"
+        
+#include <org/allbinary/logic/math/BasicDecimal.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/math/PositionStrings.h>
+
+      
+#include <org/allbinary/string/CommonSeps.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class Vertex
+            : public Object
+         {
+        
+
+    public x: BasicDecimal = new BasicDecimal(0);
+
+    public y: BasicDecimal = new BasicDecimal(0);
+
+    public z: BasicDecimal = new BasicDecimal(0);
+
+public constructor (){
+
+            super();
+        }
+
+
+    public string toString(){
+
+    stringBuffer: StringMaker = new StringMaker();;
+    
+
+    positionStrings: PositionStrings = PositionStrings.getInstance()!;;
+    
+stringBuffer!.append(positionStrings!.X_LABEL);
+    
+stringBuffer!.append(this.x.toString());
+    
+stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+    
+stringBuffer!.append(positionStrings!.Y_LABEL);
+    
+stringBuffer!.append(this.y.toString());
+    
+stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+    
+stringBuffer!.append(positionStrings!.Z_LABEL);
+    
+stringBuffer!.append(this.z.toString());
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer!.toString();;
+    
+}
+
+
+};
+
+            
+

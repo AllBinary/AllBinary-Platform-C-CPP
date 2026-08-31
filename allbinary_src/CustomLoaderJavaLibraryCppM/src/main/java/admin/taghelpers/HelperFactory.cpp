@@ -1,0 +1,405 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../java/lang/Object.h"
+        
+            #include "../../java/lang/Class.h"
+        
+            #include "../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <javax/servlet/http/HttpServletRequest.h>
+
+      
+#include <javax/servlet/jsp/PageContext.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/system/loader/AbeFactory.h>
+
+      
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class HelperFactory
+            : public Object
+         {
+        
+
+                //@Throws(LicensingException.constructor)
+            
+    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+        try {
+            
+    params: std::vector<any> = new Array(2);;
+    
+
+    classes: std::vector<Function> = new Array(2);;
+    
+
+    abeFactory: AbeFactory = AbeFactory.getInstance()!;;
+    
+classes[0]= hashMap!.constructor;
+    
+classes[1]= abeFactory!.constructor;
+    
+params[0]= hashMap;
+    
+params[1]= httpServletRequest;
+    
+
+    anyType: any = abeFactory!.getInstance(abeClientInformation, className, classes, params)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType;
+    
+
+                //: 
+} catch(e) 
+            {
+
+    error: string = "Failed To Get Instance Args: HashMap=" +hashMap!.toString() +" HttpServletRequest=" +httpServletRequest;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                            throw e;
+                    
+}
+
+                //: 
+/* catch(e) 
+            {
+
+    error: string = "Failed To Get Instance";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+*/
+}
+
+
+                //@Throws(LicensingException.constructor)
+            
+    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, PageContext pageContext){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+        try {
+            
+    params: std::vector<any> = new Array(2);;
+    
+
+    classes: std::vector<Function> = new Array(2);;
+    
+
+    abeFactory: AbeFactory = AbeFactory.getInstance()!;;
+    
+classes[0]= hashMap!.constructor;
+    
+classes[1]= abeFactory!.constructor;
+    
+params[0]= hashMap;
+    
+params[1]= pageContext;
+    
+
+    anyType: any = abeFactory!.getInstance(abeClientInformation, className, classes, params)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType;
+    
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    
+    error: string = "Failed To Get Instance Args: HashMap=" +hashMap!.toString() +" PageContext=" +pageContext;;
+    
+logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                            throw e;
+                    
+}
+
+                //: 
+/* catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    
+    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+*/
+}
+
+
+                //@Throws(LicensingException.constructor)
+            
+    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+        try {
+            
+    params: std::vector<any> = new Array(3);;
+    
+
+    classes: std::vector<Function> = new Array(3);;
+    
+
+    abeFactory: AbeFactory = AbeFactory.getInstance()!;;
+    
+classes[0]= hashMap!.constructor;
+    
+classes[1]= specialhashMap!.constructor;
+    
+classes[2]= abeFactory!.constructor;
+    
+params[0]= hashMap;
+    
+params[1]= specialhashMap;
+    
+params[2]= pageContext;
+    
+
+    anyType: any = abeFactory!.getInstance(abeClientInformation, className, classes, params)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType;
+    
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    
+    error: string = "Failed To Get Instance Args: HashMap=" +hashMap!.toString() +" PageContext=" +pageContext;;
+    
+logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                            throw e;
+                    
+}
+
+                //: 
+/* catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    
+    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+*/
+}
+
+
+                //@Throws(LicensingException.constructor)
+            
+    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className){
+
+    logUtil: LogUtil = LogUtil.getInstance()!;;
+    
+
+        try {
+            
+    anyType: any = AbeFactory.getInstance()!.getInstance(abeClientInformation, className)!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType;
+    
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    
+    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                            throw e;
+                    
+}
+
+                //: 
+/* catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        
+                                    {
+                                    
+    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    
+logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+*/
+}
+
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+public constructor (){
+
+            super();
+        }
+
+
+};
+
+            
+

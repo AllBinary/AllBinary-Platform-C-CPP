@@ -1,0 +1,243 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
+
+      
+#include <org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterfaceFactoryInterface.h>
+
+      
+#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactoryInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "BasicPaymentType.h"
+#include "PaymentTypeUtil.h"
+
+class PaymentType
+            : public Object
+         {
+        
+
+    private: const basicPaymentType: BasicPaymentType;
+
+    private: const paymentTransactionInterfaceFactoryInterface: PaymentTransactionInterfaceFactoryInterface;
+
+    private: const paymentProcessorInterfaceFactoryInterface: PaymentProcessorInterfaceFactoryInterface;
+
+protected constructor (BasicPaymentType basicPaymentType){
+
+            super();
+        this.basicPaymentType= basicPaymentType;
+    
+this.paymentTransactionInterfaceFactoryInterface= 
+                                        nullptr
+                                    ;
+    
+this.paymentProcessorInterfaceFactoryInterface= 
+                                        nullptr
+                                    ;
+    
+PaymentTypeUtil.getInstance()!.add(this);
+    
+}
+
+
+protected constructor (BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface){
+
+            super();
+        this.basicPaymentType= basicPaymentType;
+    
+this.paymentTransactionInterfaceFactoryInterface= paymentTransactionInterfaceFactoryInterface;
+    
+this.paymentProcessorInterfaceFactoryInterface= paymentProcessorInterfaceFactoryInterface;
+    
+PaymentTypeUtil.getInstance()!.add(this);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface(){
+
+                        if(this.paymentTransactionInterfaceFactoryInterface == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+
+
+                            throw new Exception("PaymentTransactionInterfaceFactoryInterface is Null");
+                    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.paymentTransactionInterfaceFactoryInterface;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface(){
+
+                        if(this.paymentProcessorInterfaceFactoryInterface == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+
+
+                            throw new Exception("PaymentProcessorInterfaceFactoryInterface is Null");
+                    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.paymentProcessorInterfaceFactoryInterface;
+    
+}
+
+
+    public Vector toVector(){
+
+    vector: Vector = new Vector();;
+    
+vector.addAll(this.getBasicPaymentType()!.toVector());
+    
+
+                        if(this.paymentTransactionInterfaceFactoryInterface != 
+                                    null
+                                )
+                        
+                                    {
+                                    vector.add(this.paymentTransactionInterfaceFactoryInterface!.constructor.name.toString()!);
+    
+
+                                    }
+                                
+
+                        if(this.paymentProcessorInterfaceFactoryInterface != 
+                                    null
+                                )
+                        
+                                    {
+                                    vector.add(this.paymentProcessorInterfaceFactoryInterface!.constructor.name.toString()!);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return vector;
+    
+}
+
+
+    public HashMap<any, any> toHashMap(){
+
+    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    
+hashMap!.putAll(this.getBasicPaymentType()!.toHashMap());
+    
+
+                        if(this.paymentTransactionInterfaceFactoryInterface != 
+                                    null
+                                )
+                        
+                                    {
+                                    hashMap!.put(PaymentGatewayData.PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this.paymentTransactionInterfaceFactoryInterface!.constructor.name.toString()!);
+    
+
+                                    }
+                                
+
+                        if(this.paymentProcessorInterfaceFactoryInterface != 
+                                    null
+                                )
+                        
+                                    {
+                                    hashMap!.put(PaymentGatewayData.PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this.paymentProcessorInterfaceFactoryInterface!.constructor.name.toString()!);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return hashMap;
+    
+}
+
+
+    public BasicPaymentType getBasicPaymentType(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.basicPaymentType;
+    
+}
+
+
+};
+
+            
+

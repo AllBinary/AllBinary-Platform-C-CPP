@@ -1,0 +1,197 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../../java/lang/Class.h"
+        
+            #include "../../../../../../../java/lang/Exception.h"
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "EventListenerList.h"
+#include "EventListener.h"
+#include "MyCanvasEventListener.h"
+#include "MyCanvasEvent.h"
+
+class MyCanvasEventService
+            : public Object
+         {
+        
+
+    private: static listenerList: javax.swing.event.EventListenerList = new javax.swing.event.EventListenerList();
+
+    public static DELETE: string = "delete";
+
+    public static DUPLICATE: string = "duplicate";
+
+    public static SELECT: string = "select";
+
+    public static ROTATE: string = "rotate";
+
+    public static EXPLODE: string = "explode";
+
+    public static AUTOEXPLODE: string = "autoExplode";
+
+    public static CENTER: string = "center";
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static addListener(MyCanvasEventListener listener){
+MyCanvasEventService.listenerList!.add(listener.constructor as Class<any>, listener as java.util.EventListener);
+    
+}
+
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static removeListener(MyCanvasEventListener listener){
+MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, listener as java.util.EventListener);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static fire(MyCanvasEvent evt){
+
+    listeners: std::vector<any> = listenerList!.getListenerList()!;;
+    
+
+
+
+
+                        for (
+    i: int32_t = 0;i < listeners.length; )
+        {
+
+                        if(listeners[i] == listeners[i +1]!.constructor)
+                        
+                                    {
+                                    
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.DELETE) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    delete(evt);
+    
+
+                                    }
+                                
+                             else 
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.DUPLICATE) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    duplicate(evt);
+    
+
+                                    }
+                                
+                             else 
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.SELECT) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    select(evt);
+    
+
+                                    }
+                                
+                             else 
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.ROTATE) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    rotate(evt);
+    
+
+                                    }
+                                
+                             else 
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.EXPLODE) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    explode(evt);
+    
+
+                                    }
+                                
+                             else 
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.AUTOEXPLODE) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    autoExplode(evt);
+    
+
+                                    }
+                                
+                             else 
+                        if(evt.getCommand()!.compareTo(MyCanvasEventService.CENTER) == 0)
+                        
+                                    {
+                                     = listeners[i +1]! as MyCanvasEventListener
+.
+                    center(evt);
+    
+
+                                    }
+                                
+
+                                    }
+                                
+}
+
+}
+
+
+private constructor (){
+
+            super();
+        }
+
+
+};
+
+            
+

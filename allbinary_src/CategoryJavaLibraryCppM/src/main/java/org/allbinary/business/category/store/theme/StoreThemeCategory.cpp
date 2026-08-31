@@ -1,0 +1,261 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/business/category/Category.h>
+
+      
+#include <org/allbinary/business/category/CategoryInterface.h>
+
+      
+#include <org/allbinary/business/category/properties/CategoryPropertiesFactoryInterface.h>
+
+      
+#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+
+      
+#include <org/allbinary/logic/visual/theme/ThemeData.h>
+
+      
+#include <org/allbinary/logic/visual/theme/ThemeValidation.h>
+
+      
+#include <org/allbinary/logic/visual/theme/ThemesData.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/w3c/dom/Node.h>
+
+      
+#include <org/w3c/dom/NodeList.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "StoreThemeCategoryInterface.h"
+
+class StoreThemeCategory: public Category: public StoreThemeCategoryInterface {
+        
+
+    private: transformInfoInterface: TransformInfoInterface;
+
+    private: themeVector: Vector;
+
+public constructor (TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
+            super(categoryPropertiesFactoryInterface, level);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.transformInfoInterface= transformInfoInterface;
+    
+this.themeVector= new Vector();
+    
+}
+
+
+public constructor (TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
+            super(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.transformInfoInterface= transformInfoInterface;
+    
+this.themeVector= new Vector();
+    
+}
+
+
+public constructor (TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
+            super(categoryPropertiesFactoryInterface, level);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.transformInfoInterface= transformInfoInterface;
+    
+this.themeVector= new Vector();
+    
+this.addThemes(node);
+    
+}
+
+
+public constructor (TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
+            super(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this.transformInfoInterface= transformInfoInterface;
+    
+this.themeVector= new Vector();
+    
+this.addThemes(node);
+    
+}
+
+
+    public TransformInfoInterface getTransformInfoInterface(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.transformInfoInterface;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public addThemes(Node node){
+
+    themesNode: Node = DomSearchHelper.getNode(ThemesData.getInstance()!.NAME, node.getChildNodes())!;;
+    
+
+    nodeList: NodeList = themesNode!.getChildNodes()!;;
+    
+
+
+
+
+                        for (
+    index: int32_t = 0;index < nodeList!.getLength(); index++)
+        {
+
+    themeNode: Node = nodeList!.item(index)!;;
+    
+
+                        if(themeNode!.getNodeName()!.compareTo(ThemeData.getInstance()!.NAME) == 0)
+                        
+                                    {
+                                    this.themeVector!.add(new ThemeValidation(this, themeNode));
+    
+
+                                    }
+                                
+}
+
+}
+
+
+    public addTheme(ThemeValidation themeValidation){
+this.themeVector!.add(themeValidation);
+    
+}
+
+
+    public Vector getThemes(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.themeVector;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public Boolean isValid(){
+
+                        if(!super.isValid().valueOf())
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Boolean.FALSE;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Boolean.TRUE;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public HashMap<any, any> toHashMap(){
+
+    categoryHashMap: HashMap<any, any> = super.toHashMap()!;;
+    
+categoryHashMap!.put(ThemesData.getInstance()!.NAME, this.themeVector);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return categoryHashMap;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public Vector toVector(){
+
+    categoryVector: Vector = super.toVector()!;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return categoryVector;
+    
+}
+
+
+};
+
+            
+

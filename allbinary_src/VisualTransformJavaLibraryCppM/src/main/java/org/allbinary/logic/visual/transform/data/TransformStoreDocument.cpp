@@ -1,0 +1,154 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <javax/servlet/http/HttpServletRequest.h>
+
+      
+#include <javax/servlet/jsp/PageContext.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontViewFactory.h>
+
+      
+#include <org/allbinary/logic/communication/http/request/RequestParams.h>
+
+      
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/control/search/SearchRequest.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "TransformHttpRequestDocument.h"
+
+class TransformStoreDocument: public TransformHttpRequestDocument {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+public constructor (PageContext pageContext, WeblisketSession weblisketSession){
+            super(pageContext, weblisketSession);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+        try {
+            
+    storeName: string = weblisketSession!.getStoreName()!;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        
+                                    {
+                                    this.logUtil!.putF("Using Session StoreName: " +storeName, this, this.commonStrings!.CONSTRUCTOR);
+    
+
+                                    }
+                                
+this.getBaseNode()!.appendChild(StoreFrontViewFactory.getInstance(storeName)!.toXmlNode(this.getDoc()));
+    
+this.getBaseNode()!.appendChild(new RequestParams(pageContext!.getRequest() as HttpServletRequest).toXmlNode(this.getDoc()));
+    
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+    
+
+                                    }
+                                
+
+
+
+                            throw e;
+                    
+}
+
+}
+
+
+public constructor (SearchRequest searchRequest){
+            super(searchRequest);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+        try {
+            this.getBaseNode()!.appendChild(StoreFrontViewFactory.getInstance(searchRequest!.getStoreFront()!.getName())!.toXmlNode(this.getDoc()));
+    
+this.getBaseNode()!.appendChild(searchRequest!.getParams()!.getParamsNode(this.getDoc()));
+    
+
+                //: 
+} catch(e) 
+            {
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        
+                                    {
+                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+    
+
+                                    }
+                                
+
+
+
+                            throw e;
+                    
+}
+
+}
+
+
+};
+
+            
+

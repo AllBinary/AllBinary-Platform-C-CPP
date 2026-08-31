@@ -1,0 +1,142 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+            #include "../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "PCKeyFactory.h"
+#include "GameKeyFactory.h"
+
+class PlatformFormInputMappingFactory
+            : public Object
+         {
+        
+
+    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+
+    public static PlatformFormInputMappingFactory getInstance(){
+
+                        if(PlatformFormInputMappingFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        
+                                    {
+                                    PlatformFormInputMappingFactory.instance= new PlatformFormInputMappingFactory();
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PlatformFormInputMappingFactory.instance as PlatformFormInputMappingFactory;
+    
+}
+
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: inputToGameKeyMapping: InputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()!;
+
+    public InputToGameKeyMapping getOrCreate(){
+
+        try {
+            
+                        if(this.inputToGameKeyMapping == InputToGameKeyMapping.getNullInstance())
+                        
+                                    {
+                                    
+    pcKeyFactory: PCKeyFactory = PCKeyFactory.getInstance()!;;
+    
+
+    inputToGameKeyMapping: InputToGameKeyMapping = new InputToGameKeyMapping();;
+    
+
+    gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;;
+    
+inputToGameKeyMapping!.add(gameKeyFactory!.UP, pcKeyFactory!.DPAD_UP);
+    
+inputToGameKeyMapping!.add(gameKeyFactory!.DOWN, pcKeyFactory!.DPAD_DOWN);
+    
+inputToGameKeyMapping!.add(gameKeyFactory!.LEFT, pcKeyFactory!.DPAD_LEFT);
+    
+inputToGameKeyMapping!.add(gameKeyFactory!.RIGHT, pcKeyFactory!.DPAD_RIGHT);
+    
+inputToGameKeyMapping!.add(gameKeyFactory!.KEY_NUM1, pcKeyFactory!.ENTER);
+    
+this.inputToGameKeyMapping= inputToGameKeyMapping;
+    
+
+                                    }
+                                
+
+                //: 
+} catch(e) 
+            {
+
+    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    
+this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.inputToGameKeyMapping;
+    
+}
+
+
+};
+
+            
+

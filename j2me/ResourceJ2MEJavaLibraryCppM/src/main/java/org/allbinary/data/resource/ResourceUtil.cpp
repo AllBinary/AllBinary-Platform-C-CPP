@@ -1,0 +1,321 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+            #include "../../../../java/lang/Exception.h"
+        
+            #include "../../../../java/lang/Integer.h"
+        
+#include <java/io/InputStream.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        //J2ME
+class ResourceUtil
+            : public Object
+         {
+        
+
+    private: static instance: ResourceUtil = new ResourceUtil();
+
+    public static ResourceUtil getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ResourceUtil.instance;
+    
+}
+
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+private constructor (){
+
+            super();
+        }
+
+
+    public setLoadingPaths(string path, string ext){
+this.logUtil!.putF(CommonStrings.getInstance()!.NOT_IMPLEMENTED, this, "setLoadingPaths");
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public InputStream getResourceAsStream(string resource){
+
+    inputStream: InputStream = resource..javaClass.getResourceAsStream(resource)!;;
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    inputStream= this.getResourceAsStreamAtStart(resource, 2);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    inputStream= this.getResourceAsStreamAtStart(resource, 1);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    stringMaker: StringMaker = new StringMaker();;
+    
+
+    index: int32_t = resource.lastIndexOf('/')!;;
+    
+
+    resourcePath: string = resource.substring(index +1)!;;
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    resourcePath= resource.substring(index);
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    RES: string = "res";;
+    
+resourcePath= stringMaker!.append(RES)!.append(resource.substring(index))!.toString();
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    stringMaker!.delete(0, stringMaker!.length());
+    
+resourcePath= stringMaker!.append("/")!.append(RES)!.append(resource.substring(index))!.toString();
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+    COLON: string = CommonSeps.getInstance()!.COLON;;
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    stringMaker!.delete(0, stringMaker!.length());
+    
+resourcePath= stringMaker!.append(RES)!.append(COLON)!.append(resource.substring(index))!.toString();
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    stringMaker!.delete(0, stringMaker!.length());
+    
+resourcePath= stringMaker!.append(RES)!.append(COLON)!.append(resource.substring(index +1))!.toString();
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    RESOURCE_STRING: string = "resource";;
+    
+stringMaker!.delete(0, stringMaker!.length());
+    
+resourcePath= stringMaker!.append(RESOURCE_STRING)!.append(COLON)!.append(resource.substring(index))!.toString();
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    stringMaker!.delete(0, stringMaker!.length());
+    
+resourcePath= stringMaker!.append(RESOURCE_STRING)!.append(COLON)!.append(resource.substring(index +1))!.toString();
+    
+inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    null
+                                )
+                        
+                                    {
+                                    stringMaker!.delete(0, stringMaker!.length());
+    
+
+
+
+                            throw new Exception(stringMaker!.append("Unable to obtain: ")!.append(resource)!.toString());
+                    
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return inputStream;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    InputStream getResourceAsStreamAtStart(string resource, int32_t startIndex){
+
+    stringMaker: StringMaker = new StringMaker();;
+    
+
+    index: int32_t = resource.indexOf(CommonSeps.getInstance()!.COLON)!;;
+    
+
+    resourcePath: string = resource.substring(index +startIndex)!;;
+    
+
+    inputStream: InputStream = resource..javaClass.getResourceAsStream(resourcePath)!;;
+    
+
+                        if(inputStream != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return inputStream;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return inputStream;
+    
+}
+
+
+    public addResource(string resource, Integer value){
+}
+
+
+};
+
+            
+

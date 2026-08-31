@@ -1,0 +1,405 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../java/lang/Object.h"
+        
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/game/input/event/DownGameKeyEventHandler.h>
+
+      
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+
+      
+#include <org/allbinary/game/input/event/UpGameKeyEventHandler.h>
+
+      
+#include <org/allbinary/graphics/GPoint.h>
+
+      
+#include <org/allbinary/graphics/Rectangle.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/math/RectangleCollisionUtil.h>
+
+      
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "BasicTouchInputFactory.h"
+#include "TouchButtonInput.h"
+#include "CurrentlyPressedTouchButtonSingleton.h"
+//#include "ReleaseHelper.h"
+#include "CancelTouchButtonInputFactory.h"
+#include "TouchScreenFactory.h"
+//#include "MultitouchReleaseHelper.h"
+#include "TouchButtonFactory.h"
+#include "TouchButton.h"
+
+class TouchButtonRecognizer
+            : public Object
+         {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+
+    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+
+    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+
+    private: lastPressedTouchButtonInput: TouchButtonInput = BasicTouchInputFactory.getInstance()!.NONE;
+
+    private: const currentlyPressedTouchButtonSingleton: CurrentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton.getInstance()!;
+//CurrentlyPressedTouchButtonSingletonDebug.getInstance();
+//inner= member=true isStatic=
+class ReleaseHelper
+            : public Object
+         {
+        
+
+    const touchButtonRecognizer: TouchButtonRecognizer;
+
+public constructor (TouchButtonRecognizer touchButtonRecognizer){
+
+            super();
+        this.touchButtonRecognizer= touchButtonRecognizer;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public release(TouchButtonInput touchButtonInput, int32_t deviceId){
+
+    nextTouchButtonInput: TouchButtonInput;;
+    
+
+    gameKeyEvent: GameKeyEvent;;
+    
+
+
+
+
+                        for (
+    index: int32_t = this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.size() -1;index >= 0; index--)
+        {
+nextTouchButtonInput= this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.get(index);
+    
+gameKeyEvent= nextTouchButtonInput!.getGameKeyEvent();
+    
+this.touchButtonRecognizer!.upGameKeyEventHandler!.fireEvent(gameKeyEvent);
+    
+this.touchButtonRecognizer!.upGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+    
+this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.removeAt(index);
+    
+}
+
+}
+
+
+};
+
+            
+//inner= member=true isStatic=
+class MultitouchReleaseHelper: public ReleaseHelper {
+        
+
+public constructor (TouchButtonRecognizer touchButtonRecognizer){
+            super(touchButtonRecognizer);
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public release(TouchButtonInput touchButtonInput, int32_t deviceId){
+
+    cancelTouchButtonInput: TouchButtonInput = CancelTouchButtonInputFactory.getInstance()!.getCancel(touchButtonInput)!;;
+    
+
+    nextTouchButtonInput: TouchButtonInput;;
+    
+
+    gameKeyEvent: GameKeyEvent;;
+    
+
+
+
+
+                        for (
+    index: int32_t = this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.size() -1;index >= 0; index--)
+        {
+nextTouchButtonInput= this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.get(index);
+    
+
+                        if(cancelTouchButtonInput == nextTouchButtonInput)
+                        
+                                    {
+                                    gameKeyEvent= nextTouchButtonInput!.getGameKeyEvent();
+    
+this.touchButtonRecognizer!.upGameKeyEventHandler!.fireEvent(gameKeyEvent);
+    
+this.touchButtonRecognizer!.upGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+    
+this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.removeAt(index);
+    
+
+                                    }
+                                
+}
+
+}
+
+
+};
+
+            
+    private: const releaseHelper;
+
+public constructor (){
+
+            super();
+        
+                        if(TouchScreenFactory.getInstance()!.isMultiTouch())
+                        
+                                    {
+                                    this.releaseHelper= new this.MultitouchReleaseHelper(this);
+    
+
+                                    }
+                                
+                        else {
+                            this.releaseHelper= new this.ReleaseHelper(this);
+    
+
+                        }
+                            
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    processRelease(TouchButtonInput touchButtonInput, int32_t deviceId){
+this.releaseHelper!.release(touchButtonInput, deviceId);
+    
+
+    gameKeyEvent: GameKeyEvent = touchButtonInput!.getGameKeyEvent()!;;
+    
+this.upGameKeyEventHandler!.fireEvent(gameKeyEvent);
+    
+this.upGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+    
+this.currentlyPressedTouchButtonSingleton!.remove(touchButtonInput);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public bool releaseTouchButtonInput(int32_t x, int32_t y, int32_t deviceId){
+
+    touchButtonInput: TouchButtonInput = this.lastPressedTouchButtonInput;;
+    
+
+                        if(this.currentlyPressedTouchButtonSingleton!.contains(touchButtonInput))
+                        
+                                    {
+                                    this.lastPressedTouchButtonInput= BasicTouchInputFactory.getInstance()!.NONE;
+    
+this.processRelease(touchButtonInput, deviceId);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+                        else {
+                            
+    list: BasicArrayList = TouchButtonFactory.getInstance()!.getList()!;;
+    
+
+    rectangle: Rectangle;;
+    
+
+    point: GPoint;;
+    
+
+    touchButton: TouchButton;;
+    
+
+
+
+
+                        for (
+    index: int32_t = list.size() -1;index >= 0; index--)
+        {
+touchButton= list.objectArray[index]! as TouchButton;
+    
+rectangle= touchButton!.getRectangle();
+    
+point= rectangle.getPoint();
+    
+
+                        if(this.rectangleCollisionUtil!.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
+                        
+                                    {
+                                    touchButtonInput= touchButton!.getTouchButtonInput();
+    
+this.processRelease(touchButtonInput, deviceId);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+}
+
+
+                        }
+                            
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public bool pressTouchButtonInput(int32_t x, int32_t y, int32_t deviceId){
+
+    list: BasicArrayList = TouchButtonFactory.getInstance()!.getList()!;;
+    
+
+    rectangle: Rectangle;;
+    
+
+    point: GPoint;;
+    
+
+    touchButton: TouchButton;;
+    
+
+    touchButtonInput: TouchButtonInput;;
+    
+
+    gameKeyEvent: GameKeyEvent;;
+    
+
+
+
+
+                        for (
+    index: int32_t = list.size() -1;index >= 0; index--)
+        {
+touchButton= list.objectArray[index]! as TouchButton;
+    
+rectangle= touchButton!.getRectangle();
+    
+point= rectangle.getPoint();
+    
+
+                        if(this.rectangleCollisionUtil!.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
+                        
+                                    {
+                                    touchButtonInput= touchButton!.getTouchButtonInput();
+    
+
+                        if(!this.currentlyPressedTouchButtonSingleton!.contains(touchButtonInput))
+                        
+                                    {
+                                    this.releaseHelper!.release(touchButtonInput, deviceId);
+    
+this.lastPressedTouchButtonInput= touchButtonInput;
+    
+this.currentlyPressedTouchButtonSingleton!.add(touchButtonInput);
+    
+gameKeyEvent= touchButtonInput!.getGameKeyEvent();
+    
+this.downGameKeyEventHandler!.fireEvent(gameKeyEvent);
+    
+this.downGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+};
+
+            
+

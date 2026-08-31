@@ -1,0 +1,157 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+            #include "../../../../java/lang/Exception.h"
+        
+#include <java/util/Vector.h>
+
+      
+#include <org/osgi/framework/BundleContext.h>
+
+      
+#include <org/osgi/framework/ServiceReference.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/osgi/OSGIServiceInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class OSGIServiceUtil
+            : public Object
+         {
+        
+
+    private: static const instance: OSGIServiceUtil = new OSGIServiceUtil();
+
+    public static OSGIServiceUtil getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return OSGIServiceUtil.instance;
+    
+}
+
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+private constructor (){
+
+            super();
+        }
+
+
+                //@Throws(Exception.constructor)
+            
+    public Vector getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences){
+
+    vector: Vector = new Vector();;
+    
+
+                        if(serviceReferences != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    size: int32_t = serviceReferences!.length
+                ;;
+    
+this.logUtil!.putF("Service References: " +size, this, "getServicesObjectVector");
+    
+
+
+
+
+                        for (
+    index: int32_t = 0;index < size; index++)
+        {
+
+    serviceReference: ServiceReference = serviceReferences[index]!;;
+    
+
+                        if(serviceReference != 
+                                    null
+                                )
+                        
+                                    {
+                                    
+    osgiServiceInterface: OSGIServiceInterface = bundleContext!.getService(serviceReference) as OSGIServiceInterface;;
+    
+
+                        if(osgiServiceInterface == 
+                                    null
+                                )
+                        
+                                    {
+                                    
+
+
+                            throw new Exception("No Service For Reference");
+                    
+
+                                    }
+                                
+vector.add(osgiServiceInterface);
+    
+
+                                    }
+                                
+}
+
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return vector;
+    
+}
+
+
+};
+
+            
+

@@ -1,0 +1,179 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Integer.h"
+        
+#include <org/allbinary/AndroidResources.h>
+
+      
+#include <org/allbinary/data/resource/ResourceUtil.h>
+
+      
+#include <org/allbinary/init/Init.h>
+
+      
+#include <org/allbinary/input/motion/button/CommonButtons.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonBlankResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonDownResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonGenericActionResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonStartResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonTurnLeftResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonTurnRightResource.h>
+
+      
+#include <org/allbinary/input/motion/button/TouchButtonUpResource.h>
+
+      
+#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class TouchButtonAndroidResources: public Init {
+        
+
+    public init(){
+
+    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    
+
+    androidResources: AndroidResources = AndroidResources.getInstance()!;;
+    
+
+    RESOURCE_STRING_ARRAY: std::vector<TouchButtonResource> = 
+                                                        [
+                                                            TouchButtonBlankResource.getInstance(), TouchButtonGenericActionResource.getInstance(), TouchButtonStartResource.getInstance(), TouchButtonUpResource.getInstance(), TouchButtonDownResource.getInstance(), TouchButtonTurnLeftResource.getInstance(), TouchButtonTurnRightResource.getInstance(), TouchButtonStrafeLeftResource.getInstance(), TouchButtonStrafeRightResource.getInstance()
+                                                        ];;
+    
+
+    RESOURCE_ARRAY: std::vector<int32_t> = new Array(RESOURCE_STRING_ARRAY.length);;
+    
+
+                        if(CommonButtons.getInstance()!.STANDARD_BUTTON_SIZE == 128)
+                        
+                                    {
+                                    RESOURCE_ARRAY[0]= androidResources!.raw.touch_button_128_by_128;
+    
+RESOURCE_ARRAY[1]= androidResources!.raw.touch_button_generic_action_128_by_128;
+    
+RESOURCE_ARRAY[2]= androidResources!.raw.touch_button_start_128_by_128;
+    
+RESOURCE_ARRAY[3]= androidResources!.raw.touch_button_up_arrow_128_by_128;
+    
+RESOURCE_ARRAY[4]= androidResources!.raw.touch_button_down_arrow_128_by_128;
+    
+RESOURCE_ARRAY[5]= androidResources!.raw.touch_button_turn_left_arrow_128_by_128;
+    
+RESOURCE_ARRAY[6]= androidResources!.raw.touch_button_turn_right_arrow_128_by_128;
+    
+RESOURCE_ARRAY[7]= androidResources!.raw.touch_button_strafe_left_arrow_128_by_128;
+    
+RESOURCE_ARRAY[8]= androidResources!.raw.touch_button_strafe_right_arrow_128_by_128;
+    
+
+                        if(OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!.isOverScan())
+                        
+                                    {
+                                    resourceUtil!.addResource(RESOURCE_STRING_ARRAY[2]!.HINT, Integer.valueOf(androidResources!.raw.ouya_o));
+    
+
+                                    }
+                                
+
+                                    }
+                                
+                        else {
+                            RESOURCE_ARRAY[0]= androidResources!.raw.touch_button_64_by_64;
+    
+RESOURCE_ARRAY[1]= androidResources!.raw.touch_button_generic_action_64_by_64;
+    
+RESOURCE_ARRAY[2]= androidResources!.raw.touch_button_start_64_by_64;
+    
+RESOURCE_ARRAY[3]= androidResources!.raw.touch_button_up_arrow_64_by_64;
+    
+RESOURCE_ARRAY[4]= androidResources!.raw.touch_button_down_arrow_64_by_64;
+    
+RESOURCE_ARRAY[5]= androidResources!.raw.touch_button_turn_left_arrow_64_by_64;
+    
+RESOURCE_ARRAY[6]= androidResources!.raw.touch_button_turn_right_arrow_64_by_64;
+    
+RESOURCE_ARRAY[7]= androidResources!.raw.touch_button_strafe_left_arrow_64_by_64;
+    
+RESOURCE_ARRAY[8]= androidResources!.raw.touch_button_strafe_right_arrow_64_by_64;
+    
+
+                        }
+                            
+
+
+
+
+                        for (
+    index: int32_t = 0;index < RESOURCE_ARRAY.length; index++)
+        {
+resourceUtil!.addResource(RESOURCE_STRING_ARRAY[index]!.RESOURCE, Integer.valueOf(RESOURCE_ARRAY[index]!));
+    
+}
+
+}
+
+
+};
+
+            
+

@@ -1,0 +1,142 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/graphics/j2me/StatusFactory.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "GraphicsItemInterfaceFactoryInterface.h"
+#include "GraphicItemFactory.h"
+
+class ToolFactory
+            : public Object
+         {
+        
+
+    private: static const instance: ToolFactory = new ToolFactory();
+
+    public static ToolFactory getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ToolFactory.instance;
+    
+}
+
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+
+    private: selectedTool: GraphicsItemInterfaceFactoryInterface = 
+                null
+            ;
+
+    private: tool: string = 
+                null
+            ;
+
+    private: const SELECTED_LABEL: string = "Selected: ";
+
+    public setSelectedTool(string tool){
+
+        try {
+            StatusFactory.getInstance()!.setStatus(this.SELECTED_LABEL +tool);
+    
+this.tool= tool;
+    
+
+                //: 
+} catch(e) 
+            {
+this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setSelectionTool", e);
+    
+}
+
+}
+
+
+    public GraphicsItemInterfaceFactoryInterface getSelectedToolFactory(){
+StatusFactory.getInstance()!.setStatus("Tool In Use: " +this.tool);
+    
+
+                        if(this.tool != 
+                                    null
+                                )
+                        
+                                    {
+                                    this.selectedTool= GraphicItemFactory.getInstance()!.getInstance(this.tool);
+    
+this.logUtil!.putF("New Tool: " +this.selectedTool, this, "getSelectedToolFactory");
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.selectedTool;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+
+                        }
+                            
+}
+
+
+};
+
+            
+

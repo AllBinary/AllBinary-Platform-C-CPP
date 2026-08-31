@@ -1,0 +1,131 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2022 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "DisplayInfoSingleton.h"
+
+class GameTickDisplayInfoSingleton
+            : public Object
+         {
+        
+
+    private: static const instance: GameTickDisplayInfoSingleton = new GameTickDisplayInfoSingleton();
+
+    public static GameTickDisplayInfoSingleton getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameTickDisplayInfoSingleton.instance;
+    
+}
+
+
+    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+
+    private: lastWidth: int32_t = this.displayInfoSingleton!.getLastWidth()!;
+
+    private: lastHeight: int32_t = this.displayInfoSingleton!.getLastHeight()!;
+
+    private: lastHalfWidth: int32_t = this.displayInfoSingleton!.getLastHalfWidth()!;
+
+    private: lastHalfHeight: int32_t = this.displayInfoSingleton!.getLastHalfHeight()!;
+
+    public update(){
+this.lastWidth= this.displayInfoSingleton!.getLastWidth();
+    
+this.lastHeight= this.displayInfoSingleton!.getLastHeight();
+    
+this.lastHalfWidth= this.displayInfoSingleton!.getLastHalfWidth();
+    
+this.lastHalfHeight= this.displayInfoSingleton!.getLastHalfHeight();
+    
+}
+
+
+    public int32_t getLastWidth(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.lastWidth;
+    
+}
+
+
+    public int32_t getLastHeight(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.lastHeight;
+    
+}
+
+
+    public int32_t getLastHalfWidth(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.lastHalfWidth;
+    
+}
+
+
+    public int32_t getLastHalfHeight(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this.lastHalfHeight;
+    
+}
+
+
+};
+
+            
+

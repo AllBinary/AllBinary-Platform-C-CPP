@@ -1,0 +1,116 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsProperty.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "Group.h"
+
+class BasicGroupFactory
+            : public Object
+         {
+        
+
+    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+
+    public static BasicGroupFactory getInstance(){
+
+                        if(BasicGroupFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        
+                                    {
+                                    BasicGroupFactory.instance= new BasicGroupFactory();
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return BasicGroupFactory.instance as BasicGroupFactory;
+    
+}
+
+
+    public const NAME: string = "GROUP_NAME";
+
+    public const NO_SUCH_GROUP: string = "No Such Group: ";
+
+    public const GOOD: Group = new Group("Good Guys", 0);
+
+    public const ENEMY: Group = new Group("Bad Guys", 1);
+
+    public const ENEMY_ON_LEVEL: Group = new Group("Bad Guys on Level", 2);
+
+    public const NONE: Group = new Group("Not On A Team", 3);
+
+    public const GOOD_ARRAY: std::vector<Group> = 
+                                                        [
+                                                            this.GOOD
+                                                        ];
+
+    public const ENEMY_ARRAY: std::vector<Group> = 
+                                                        [
+                                                            this.ENEMY
+                                                        ];
+
+    public const ENEMY_ON_LEVEL_ARRAY: std::vector<Group> = 
+                                                        [
+                                                            this.ENEMY,this.ENEMY_ON_LEVEL
+                                                        ];
+
+    public const NONE_ARRAY: std::vector<Group> = 
+                                                        [
+                                                            this.NONE
+                                                        ];
+
+};
+
+            
+
