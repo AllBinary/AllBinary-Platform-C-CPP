@@ -54,11 +54,10 @@
 class CommonSeps
             : public Object
          {
-        
 
-    private: static const instance: CommonSeps = new CommonSeps();
+    private: static const CommonSeps instance = new CommonSeps();
 
-    public static CommonSeps getInstance(){
+    public: static CommonSeps getInstance(){
 
 
 
@@ -68,57 +67,57 @@ class CommonSeps
 }
 
 
-    public const NEW_LINE: string = "\n";
+    public: const std::string NEW_LINE = "\n";
 
-    public const SEMICOLON: string = ";";
+    public: const std::string SEMICOLON = ";";
 
-    public const EQUALS: string = "=";
+    public: const std::string EQUALS = "=";
 
-    public const SPACE: string = " ";
+    public: const std::string SPACE = " ";
 
-    public const COMMA: string = ",";
+    public: const std::string COMMA = ",";
 
-    public const COLON: string = ":";
+    public: const std::string COLON = ":";
 
-    public const PERIOD: string = ".";
+    public: const std::string PERIOD = ".";
 
-    public const UNDERSCORE: string = "_";
+    public: const std::string UNDERSCORE = "_";
 
-    public const COLON_SEP: string = new StringMaker().append(this.COLON)!.append(this.SPACE)!.toString()!;
+    public: const std::string COLON_SEP = new StringMaker().append(this.COLON)!.append(this.SPACE)!.toString()!;
 
-    public const COMMA_SEP: string = new StringMaker().append(this.COMMA)!.append(this.SPACE)!.toString()!;
+    public: const std::string COMMA_SEP = new StringMaker().append(this.COMMA)!.append(this.SPACE)!.toString()!;
 
-    public const PARENTHESIS_OPEN: string = "(";
+    public: const std::string PARENTHESIS_OPEN = "(";
 
-    public const PARENTHESIS_CLOSE: string = ")";
+    public: const std::string PARENTHESIS_CLOSE = ")";
 
-    public const BRACE_OPEN: string = "{";
+    public: const std::string BRACE_OPEN = "{";
 
-    public const BRACE_CLOSE: string = "}";
+    public: const std::string BRACE_CLOSE = "}";
 
-    public const BRACKET_OPEN: string = "[";
+    public: const std::string BRACKET_OPEN = "[";
 
-    public const BRACKET_CLOSE: string = "]";
+    public: const std::string BRACKET_CLOSE = "]";
 
-    public const DASH: string = "-";
+    public: const std::string DASH = "-";
 
-    public const PERCENT: string = "%";
+    public: const std::string PERCENT = "%";
 
-    public const AMPERSAND: string = "&";
+    public: const std::string AMPERSAND = "&";
 
-    public const FORWARD_SLASH: string = "/";
+    public: const std::string FORWARD_SLASH = "/";
 
-    public const BACK_SLASH: string = "\\";
+    public: const std::string BACK_SLASH = "\\";
 
-    public const QUESTION: string = "?";
+    public: const std::string QUESTION = "?";
 
-    public const QUOTE: string = "\"";
+    public: const std::string QUOTE = "\"";
 
-    public const QUOTE_END: string = "\",";
+    public: const std::string QUOTE_END = "\",";
 
-    public const COMMENT: string = "//";
+    public: const std::string COMMENT = "//";
 
-    public const INDENT: string = "    ";
+    public: const std::string INDENT = "    ";
 
 };
 

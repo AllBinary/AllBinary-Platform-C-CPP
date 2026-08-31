@@ -1,0 +1,75 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_H
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_H
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Class.h"
+        
+#include <org/allbinary/logic/java/anyType/ConstructorUtil.h>
+
+      
+#include <org/allbinary/logic/java/anyType/InterfaceUtil.h>
+
+      
+#include <org/allbinary/logic/java/anyType/MethodUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class ClassUtil
+            : public Object
+         {
+        
+
+    public static string viewAll(any = {} anyType, string lineBreak);
+
+    public static string viewAll(Function myClass, string lineBreak);
+
+private constructor ();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_H

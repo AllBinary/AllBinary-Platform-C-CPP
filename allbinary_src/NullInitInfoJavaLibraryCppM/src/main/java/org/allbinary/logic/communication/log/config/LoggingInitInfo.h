@@ -1,0 +1,109 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_H
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_H
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "LogConfig.h"
+
+class LoggingInitInfo
+            : public Object
+         {
+        
+
+    private: static logConfigInfoList: BasicArrayList = 
+                null
+            ;
+
+    private: static hasRead: bool = false;
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static write();
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    static read();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static setHasRead(bool value);
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    static updateIfNeeded();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public static set(BasicArrayList logConfigInfoList);
+
+                //@Throws(Exception.constructor)
+            
+    public static BasicArrayList get();
+
+                //@Throws(Exception.constructor)
+            
+    public static BasicArrayList getTypeList();
+
+public constructor ();
+
+    public bool isValid();
+
+                //@Throws(Exception.constructor)
+            
+    public int32_t getNumberOfLogConfigs();
+
+    public string toString();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_H

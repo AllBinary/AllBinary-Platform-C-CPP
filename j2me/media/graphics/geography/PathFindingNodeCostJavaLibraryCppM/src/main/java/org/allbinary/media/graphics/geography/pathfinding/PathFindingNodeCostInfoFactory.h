@@ -1,0 +1,77 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2006 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_H
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_H
+
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "PathFindingNodeCostInfoFactoryBase.h"
+#include "PathFindingNodeCostInfo.h"
+
+class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
+        
+
+    private: const pathFindingNodeCostInfoAdjacencyList: std::vector<std::vector<PathFindingNodeCostInfo>>;
+
+public constructor (int32_t max);
+
+                //@Throws(Exception.constructor)
+            
+    public create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+
+                //@Throws(Exception.constructor)
+            
+    public PathFindingNodeCostInfo getInstance(GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+
+    public PathFindingNodeCostInfo getInstance(GeographicMapCellPosition goingToFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
+
+    public int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_H

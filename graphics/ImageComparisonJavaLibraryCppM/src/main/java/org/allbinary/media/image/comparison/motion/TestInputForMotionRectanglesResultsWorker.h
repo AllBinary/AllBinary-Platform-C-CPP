@@ -1,0 +1,128 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Exception.h"
+        
+            #include "../../../../../../java/lang/Thread.h"
+        
+#include <java/awt.h>
+
+      
+#include <java/awt/event/InputEvent.h>
+
+      
+#include <java/awt/event/KeyEvent.h>
+
+      
+#include <java/util/Hashtable.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
+
+      
+#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
+
+      
+#include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "MotionRectanglesResultsListener.h"
+#include "MotionRectanglesResultsEvent.h"
+#include "MotionRectangles.h"
+#include "Rectangle.h"
+
+class TestInputForMotionRectanglesResultsWorker
+            : public Object
+        : public MotionRectanglesResultsListener {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+
+    private: index: int64_t= 0;
+
+    private: running: bool= false;
+
+    private: motionRectanglesVector: Vector;
+
+public constructor ();
+
+    public Vector getMotionRectanglesVector();
+
+    public onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent);
+
+    public onEvent(AllBinaryEventObject allBinaryEventObject);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public bool isRunning();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public setRunning(bool running);
+
+    public run();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H

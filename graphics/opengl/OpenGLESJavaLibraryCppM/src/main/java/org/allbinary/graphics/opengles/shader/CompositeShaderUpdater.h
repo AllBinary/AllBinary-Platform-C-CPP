@@ -1,0 +1,106 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2025 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
+
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <javax/microedition/khronos/egl/EGLConfig.h>
+
+      
+#include <javax/microedition/khronos/opengles/GL10.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsConstructor.h>
+
+      
+#include <jsinterop/annotations/JsProperty.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "ShaderUpdater.h"
+#include "ShaderStrings.h"
+
+class CompositeShaderUpdater: public ShaderUpdater {
+        
+
+    private: static const instanceC: CompositeShaderUpdater = new CompositeShaderUpdater(StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), NullUtil.getInstance()!.NULL_INT_ARRAY);
+
+    public static CompositeShaderUpdater getInstance();
+
+    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+
+    const shaderStrings: ShaderStrings = ShaderStrings.getInstance()!;
+
+    public const uniformBlockHandleArray: std::vector<int32_t>;
+
+    public const uniformBlockArray: std::vector<string>;
+
+    public const uniformHandleArray: std::vector<int32_t>;
+
+    public const uniformArray: std::vector<string>;
+
+    public const attributeHandleArray: std::vector<int32_t>;
+
+    public const attributeArray: std::vector<string>;
+
+public constructor (std::vector<string> uniformBlockArray, std::vector<string> uniformArray, std::vector<string> attributeArray, std::vector<int32_t> attributeHandleArray);
+
+    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle);
+
+    public onSurfaceDestroyed(GL10 gl);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H

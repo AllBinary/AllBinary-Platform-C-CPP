@@ -1,0 +1,121 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITY_H
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITY_H
+
+            #include "../../../../../../../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+
+      
+#include <org/allbinary/business/entry/EntryData.h>
+
+      
+#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
+
+      
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "InventoryEntityInterface.h"
+
+class InventoryEntity: public AbSqlBean: public InventoryEntityInterface {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const tableName: string = "basicinventory";
+
+public constructor ();
+
+    public insert(Vector values);
+
+    public delete(string value);
+
+                //@Throws(Exception.constructor)
+            
+    public Vector getItems(StoreFrontInterface storeFrontInterface);
+
+                //@Throws(MoneyException.constructor)
+            
+    public ItemInterface getItem(string id);
+
+    public string getWeight(string id);
+
+    public string createTableStatement();
+
+    public string createTable();
+
+    public update(HashMap<any, any> updatedValues);
+
+    public string dropTable();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITY_H

@@ -1,0 +1,81 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
+
+            #include "../../../java/lang/Object.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+
+      
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class InventoryColumnUtil
+            : public Object
+         {
+        
+
+    private: static const instance: InventoryColumnUtil = new InventoryColumnUtil();
+
+    public static InventoryColumnUtil getInstance();
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    public Vector getColumnWhereLike(InventoryEntity inventoryEntity, string category, string column);
+
+};
+
+            
+
+
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H

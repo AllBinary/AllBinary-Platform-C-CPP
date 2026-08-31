@@ -1,0 +1,95 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
+
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "RaceTrackGeographicMapCellType.h"
+#include "RaceTrackGeographicMapCellTypes.h"
+
+class RaceTrackGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
+        
+
+    private: static const instanceC: RaceTrackGeographicMapCellTypeFactory = new RaceTrackGeographicMapCellTypeFactory();
+
+    public static RaceTrackGeographicMapCellTypeFactory getInstance();
+
+    public EMPTY_CELL_TYPE: GeographicMapCellType = new GeographicMapCellType(0,  -1);
+
+    public EASY_CELL_TYPE: GeographicMapCellType = this.EMPTY_CELL_TYPE;
+
+    public const BOTTOM_LEFT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const TOP_LEFT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const TOP_RIGHT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const VERTICAL_STRAIGHT_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const START_LINE_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public const DEFAULT_FINISH_LINE_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+
+    public FINISH_LINE_ROAD_CELL_TYPE: GeographicMapCellType = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE;
+
+public constructor ();
+
+    public int32_t getStartType();
+
+    public int32_t getEndType();
+
+    public int32_t getEmptyType();
+
+    public bool isPath(GeographicMapCellType cellType);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H

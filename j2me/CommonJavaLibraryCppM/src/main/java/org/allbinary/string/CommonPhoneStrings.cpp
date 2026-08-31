@@ -42,11 +42,10 @@
 class CommonPhoneStrings
             : public Object
          {
-        
 
-    private: static const instance: CommonPhoneStrings = new CommonPhoneStrings();
+    private: static const CommonPhoneStrings instance = new CommonPhoneStrings();
 
-    public static CommonPhoneStrings getInstance(){
+    public: static CommonPhoneStrings getInstance(){
 
 
 
@@ -56,39 +55,39 @@ class CommonPhoneStrings
 }
 
 
-    public const UP: string = "UP";
+    public: const std::string UP = "UP";
 
-    public const DOWN: string = "DOWN";
+    public: const std::string DOWN = "DOWN";
 
-    public const LEFT: string = "LEFT";
+    public: const std::string LEFT = "LEFT";
 
-    public const RIGHT: string = "RIGHT";
+    public: const std::string RIGHT = "RIGHT";
 
-    public const ZERO: string = "0";
+    public: const std::string ZERO = "0";
 
-    public const ONE: string = "1";
+    public: const std::string ONE = "1";
 
-    public const TWO: string = "2";
+    public: const std::string TWO = "2";
 
-    public const THREE: string = "3";
+    public: const std::string THREE = "3";
 
-    public const FOUR: string = "4";
+    public: const std::string FOUR = "4";
 
-    public const FIVE: string = "5";
+    public: const std::string FIVE = "5";
 
-    public const SIX: string = "6";
+    public: const std::string SIX = "6";
 
-    public const SEVEN: string = "7";
+    public: const std::string SEVEN = "7";
 
-    public const EIGHT: string = "8";
+    public: const std::string EIGHT = "8";
 
-    public const NINE: string = "9";
+    public: const std::string NINE = "9";
 
-    public const POUND: string = "#";
+    public: const std::string POUND = "#";
 
-    public const STAR: string = "*";
+    public: const std::string STAR = "*";
 
-    public const FIRE: string = "FIRE";
+    public: const std::string FIRE = "FIRE";
 
 };
 

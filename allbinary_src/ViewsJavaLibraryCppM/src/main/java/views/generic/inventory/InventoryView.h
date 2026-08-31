@@ -1,0 +1,112 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYVIEW_H
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYVIEW_H
+
+            #include "../../../java/lang/Exception.h"
+        
+            #include "../../../java/lang/Integer.h"
+        
+#include <java/util/Vector.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/InventoryData.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemView.h>
+
+      
+#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
+
+      
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
+
+      
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>
+
+      
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+
+      
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/control/search/SearchData.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/w3c/dom/Document.h>
+
+      
+#include <org/w3c/dom/Node.h>
+
+      
+#include <views/business/context/modules/storefront/HttpStoreComponentView.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class InventoryView: public HttpStoreComponentView: public DomNodeInterface {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+public constructor (TransformInfoInterface transformInfoInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public Node toXmlNode(Document document);
+
+    public addDomNodeInterfaces();
+
+    public string view();
+
+};
+
+            
+
+
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYVIEW_H

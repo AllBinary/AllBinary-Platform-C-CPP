@@ -1,0 +1,92 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
+
+            #include "../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/visual/transform/TransformInterface.h>
+
+      
+#include <org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/w3c/dom/Document.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "CategoryView.h"
+#include "CategoryInterface.h"
+
+class CategoryComponent: public CategoryView: public TransformInterface {
+        
+
+public constructor (CategoryInterface categoryInterface);
+
+    public NO_TYPE: int32_t = 0;
+
+    public int32_t getTypeId();
+
+    public TransformDocumentInterface getTransformDocumentInterface();
+
+                //@Throws(Exception.constructor)
+            
+    public TransformInfoInterface getTransformInfoInterface();
+
+    public setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public string view();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H

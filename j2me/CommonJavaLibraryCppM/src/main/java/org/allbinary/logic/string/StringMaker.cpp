@@ -45,13 +45,12 @@
 class StringMaker
             : public Object
          {
-        
 
-    private: charArray: std::vector<char>;
+    private: std::vector<char> charArray;
 
-    private: currentLength: int32_t= 0;
+    private: int32_t currentLength= 0;
 
-public constructor (){
+public: StringMaker(){
 
             super();
         this.charArray= new Array(20);
@@ -59,9 +58,9 @@ public constructor (){
 }
 
 
-    public StringMaker append(string string){
+    public: StringMaker append(std::string string){
 
-    stringLength: int32_t = string.length!;;
+    int32_t stringLength = string.length!;;
     
 this.ensureCapacity(this.currentLength +stringLength);
     
@@ -85,7 +84,7 @@ this.currentLength += stringLength;
 }
 
 
-    public StringMaker appendchar(char c){
+    public: StringMaker appendchar(char c){
 this.ensureCapacity(this.currentLength +1);
     
 this.charArray[this.currentLength++]= c;
@@ -99,7 +98,7 @@ this.charArray[this.currentLength++]= c;
 }
 
 
-    public StringMaker appendbyte(int8_t b){
+    public: StringMaker appendbyte(int8_t b){
 this.append(b.toString());
     
 
@@ -111,7 +110,7 @@ this.append(b.toString());
 }
 
 
-    public StringMaker appendshort(int16_t b){
+    public: StringMaker appendshort(int16_t b){
 this.append(b.toString());
     
 
@@ -123,7 +122,7 @@ this.append(b.toString());
 }
 
 
-    public StringMaker appendint(int32_t i){
+    public: StringMaker appendint(int32_t i){
 this.append(i.toString());
     
 
@@ -135,7 +134,7 @@ this.append(i.toString());
 }
 
 
-    public StringMaker appendlong(int64_t l){
+    public: StringMaker appendlong(int64_t l){
 this.append(l.toString());
     
 
@@ -147,7 +146,7 @@ this.append(l.toString());
 }
 
 
-    public StringMaker appendfloat(float f){
+    public: StringMaker appendfloat(float f){
 this.append(f.toString());
     
 
@@ -159,9 +158,9 @@ this.append(f.toString());
 }
 
 
-    public StringMaker appendboolean(bool bool){
+    public: StringMaker appendboolean(bool bool_){
 
-                        if(bool)
+                        if(bool_)
                         
                                     {
                                     this.ensureCapacity(this.currentLength +4);
@@ -202,9 +201,9 @@ this.charArray[this.currentLength++]= 'e';
 }
 
 
-    public ensureCapacity(int32_t minSize){
+    public: void ensureCapacity(int32_t minSize){
 
-    oldCapacity: int32_t = this.charArray!.length
+    int32_t oldCapacity = this.charArray!.length
                 ;;
     
 
@@ -212,19 +211,19 @@ this.charArray[this.currentLength++]= 'e';
                         
                                     {
                                     
-    newCapacity: int32_t = oldCapacity *3;;
+    int32_t newCapacity = oldCapacity *3;;
     
 
                         if(newCapacity < minSize)
                         newCapacity= minSize
 
-    copy: std::vector<char> = 
+    std::vector<char> copy = 
                                                         
                                                         new Array(newCapacity)
                                                     ;;
     
 
-    min: int32_t = this.min(this.charArray!.length, newCapacity)!;;
+    int32_t min = this.min(this.charArray!.length, newCapacity)!;;
     
 System.arraycopy(this.charArray, 0, copy, 0, min);
     
@@ -236,7 +235,7 @@ this.charArray= copy;
 }
 
 
-    public int32_t min(int32_t value, int32_t value2){
+    public: int32_t min(int32_t value, int32_t value2){
 
 
 
@@ -253,7 +252,7 @@ this.charArray= copy;
 }
 
 
-    public StringMaker delete(int32_t start, int32_t end){
+    public: StringMaker delete_(int32_t start, int32_t end){
 this.currentLength -= (end -start);
     
 
@@ -265,7 +264,7 @@ this.currentLength -= (end -start);
 }
 
 
-    public int32_t length(){
+    public: int32_t length(){
 
 
 
@@ -275,7 +274,7 @@ this.currentLength -= (end -start);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 

@@ -1,0 +1,55 @@
+
+        /* Generated Code Do Not Modify */
+        
+
+
+        #ifndef _APPTEST_H
+        #define _APPTEST_H
+
+            #include "java/lang/Object.h"
+        
+#include <org/junit/jupiter/api/Assertions.h>
+
+      
+#include <org/junit/jupiter/api/DisplayName.h>
+
+      
+#include <org/junit/jupiter/api/Test.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class AppTest
+            : public Object
+         {
+        
+
+    testAddition();
+
+    testStringEquality();
+
+    testBooleanAssertions();
+
+};
+
+            
+
+
+        #endif //_APPTEST_H

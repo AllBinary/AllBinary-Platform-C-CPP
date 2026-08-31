@@ -25,6 +25,7 @@
     <properties>
         <cygwin.home>G:/cygwin64</cygwin.home>
         <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
+        <native.jsinterop.include.path>G:/mnt/bc/mydev/workingcpp/replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryCppM/src/main/java</native.jsinterop.include.path>
         <native.c.standard>c17</native.c.standard>
         <native.cpp.standard>c++17</native.cpp.standard>
         <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
@@ -73,6 +74,7 @@
                                 <argument>${native.cpp.standard}</argument>
                                 <argument>${native.compiler.flags}</argument>
                                 <argument>${native.include.path}</argument>
+                                <argument>${native.jsinterop.include.path}</argument>
                             </arguments>
                         </configuration>
                     </execution>

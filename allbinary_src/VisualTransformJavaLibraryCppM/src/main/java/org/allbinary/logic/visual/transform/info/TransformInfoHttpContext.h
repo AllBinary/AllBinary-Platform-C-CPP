@@ -1,0 +1,103 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_H
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_H
+
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <javax/servlet/jsp/PageContext.h>
+
+      
+#include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
+
+      
+#include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/io/path/AbPath.h>
+
+      
+#include <org/allbinary/logic/io/path/AbPathData.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "TransformInfoHttp.h"
+
+class TransformInfoHttpContext: public TransformInfoHttp {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+public constructor (HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+
+public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+
+                //@Throws(Exception.constructor)
+            
+    string getPath();
+
+                //@Throws(Exception.constructor)
+            
+    public AbPath getTemplateFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public AbPath getObjectConfigFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public AbPath getDataFilePath();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_H

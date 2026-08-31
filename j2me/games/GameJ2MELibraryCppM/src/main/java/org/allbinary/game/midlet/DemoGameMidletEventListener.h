@@ -1,0 +1,61 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTLISTENER_H
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTLISTENER_H
+
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "DemoGameMidletEvent.h"
+
+class DemoGameMidletEventListener: public EventListenerInterface {
+        
+
+    onDemoStart();
+
+    onGameStart();
+
+    onDemoGameMidletEvent(DemoGameMidletEvent demoGameMidletEvent);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTLISTENER_H

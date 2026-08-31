@@ -1,0 +1,75 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
+        #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
+
+            #include "../../../../../java/lang/Object.h"
+        
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <java/util/Vector.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class BasicQueue
+            : public Object
+         {
+        
+
+    const queueVector: Vector = new Vector();
+
+protected constructor ();
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    bool offer(any = {} anyType);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    remove(any = {} anyType);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    any removeLast();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H

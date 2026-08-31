@@ -12,12 +12,15 @@ c_standard="$5"
 cpp_standard="$6"
 read -r -a compiler_flags <<< "$7"
 include_dir="$(cygpath -u "$8")"
+jsinterop_include_dir="$(cygpath -u "$9")"
 include_overlay="$object_dir/include-overlay"
 
 mkdir -p "$object_dir" "$archive_dir"
 find "$object_dir" -type f -delete
 mkdir -p "$include_overlay"
 cp -R "$include_dir"/. "$include_overlay"/
+cp -R "$jsinterop_include_dir"/. "$include_overlay"/
+cp -R "$source_dir"/. "$include_overlay"/
 
 objects=()
 while IFS= read -r -d '' source; do
@@ -29,10 +32,10 @@ while IFS= read -r -d '' source; do
 
     case "$source" in
         *.c)
-            gcc -std="$c_standard" "${compiler_flags[@]}" -I"$source_dir" -I"$include_dir" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
+            gcc -std="$c_standard" "${compiler_flags[@]}" -I"$include_overlay" -I"$source_dir" -I"$include_dir" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
             ;;
         *)
-            g++ -std="$cpp_standard" "${compiler_flags[@]}" -I"$source_dir" -I"$include_dir" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
+            g++ -std="$cpp_standard" "${compiler_flags[@]}" -I"$include_overlay" -I"$source_dir" -I"$include_dir" -iquote "$relative_include_dir" -MMD -MP -c "$source" -o "$object"
             ;;
     esac
 

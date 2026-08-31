@@ -1,0 +1,107 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_H
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_H
+
+            #include "../../../../../java/lang/Object.h"
+        
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <java/io/File.h>
+
+      
+#include <java/io/FileInputStream.h>
+
+      
+#include <java/util/List.h>
+
+      
+#include <javax/xml/bind/JAXBContext.h>
+
+      
+#include <javax/xml/bind/JAXBElement.h>
+
+      
+#include <javax/xml/bind/Unmarshaller.h>
+
+      
+#include <javax/xml/transform/stream/StreamSource.h>
+
+      
+#include <org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "InputAutomationConfiguration.h"
+
+class InputAutomationConfigurationFactory
+            : public Object
+         {
+        
+
+    private: static const instance: InputAutomationConfigurationFactory = new InputAutomationConfigurationFactory();
+
+    public static InputAutomationConfigurationFactory getInstance();
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    public inputAutomationConfiguration: InputAutomationConfiguration = 
+                null
+            ;
+
+private constructor ();
+
+                //@Throws(Exception.constructor)
+            
+    public init(AbeClientInformationInterface abeClientInformation);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_H

@@ -1,0 +1,135 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2003 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_H
+        #define ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_H
+
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <javax/microedition/lcdui/Font.h>
+
+      
+#include <javax/microedition/lcdui/Graphics.h>
+
+      
+#include <javax/microedition/lcdui/Image.h>
+
+      
+#include <org/allbinary/game/layer/CostLayerInterfaceFactoryInterface.h>
+
+      
+#include <org/allbinary/game/rts/technology/event/TechEventListenerInterface.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/animation/Animation.h>
+
+      
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+
+      
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+
+      
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+
+      
+#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
+
+      
+#include <org/allbinary/logic/util/event/EventStrings.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class RTSLayerCostAnimation: public Animation: public TechEventListenerInterface, public UpdateMyFontInterface {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const primitiveLongUtil: PrimitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(10000)!;
+
+    private: const DOLLAR: string = "$";
+
+    private: const image: Image;
+
+    private: const layerInterfaceFactoryInterface: CostLayerInterfaceFactoryInterface;
+
+    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+
+    private: costString: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+
+    private: len: int32_t= 0;
+
+    private: adjustedCostX: int32_t= 0;
+
+    private: fontHeight: int32_t = 0;
+
+public constructor (Image image, CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+
+    public updateMeasurement(Graphics graphics);
+
+    public onEvent(AllBinaryEventObject event);
+
+    public onTechEvent(AllBinaryEventObject event);
+
+                //@Throws(Exception.constructor)
+            
+    public update();
+
+    public paintXY(Graphics graphics, int32_t x, int32_t y);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_H

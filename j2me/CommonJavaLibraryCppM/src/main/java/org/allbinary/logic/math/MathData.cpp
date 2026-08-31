@@ -48,11 +48,10 @@
 class MathData
             : public Object
          {
-        
 
-    private: static const instance: MathData = new MathData();
+    private: static const MathData instance = new MathData();
 
-    public static MathData getInstance(){
+    public: static MathData getInstance(){
 
 
 
@@ -62,23 +61,23 @@ class MathData
 }
 
 
-    public const EQUALS: string;
+    public: const std::string EQUALS;
 
-    public const PLUS: string = "+";
+    public: const std::string PLUS = "+";
 
-    public const GREATER_THAN: string = ">";
+    public: const std::string GREATER_THAN = ">";
 
-    public const MINUS: string;
+    public: const std::string MINUS;
 
-    public const DIVIDE: string;
+    public: const std::string DIVIDE;
 
-    public const MULTIPLY: string;
+    public: const std::string MULTIPLY;
 
-private constructor (){
+private: MathData(){
 
             super();
         
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps.getInstance()!;;
     
 this.EQUALS= commonSeps!.EQUALS;
     

@@ -42,11 +42,10 @@
 class CommonStateStrings
             : public Object
          {
-        
 
-    private: static const instance: CommonStateStrings = new CommonStateStrings();
+    private: static const CommonStateStrings instance = new CommonStateStrings();
 
-    public static CommonStateStrings getInstance(){
+    public: static CommonStateStrings getInstance(){
 
 
 
@@ -56,29 +55,29 @@ class CommonStateStrings
 }
 
 
-    public const CONTEXT: string = "Context: ";
+    public: const std::string CONTEXT = "Context: ";
 
-    public const FINISH: string = "finish";
+    public: const std::string FINISH = "finish";
 
-    public const CREATE: string = "onCreate";
+    public: const std::string CREATE = "onCreate";
 
-    public const START: string = "onStart";
+    public: const std::string START = "onStart";
 
-    public const RESTART: string = "onRestart";
+    public: const std::string RESTART = "onRestart";
 
-    public const RESUME: string = "onResume";
+    public: const std::string RESUME = "onResume";
 
-    public const PAUSE: string = "onPause";
+    public: const std::string PAUSE = "onPause";
 
-    public const STOP: string = "onStop";
+    public: const std::string STOP = "onStop";
 
-    public const DESTROY: string = "onDestroy";
+    public: const std::string DESTROY = "onDestroy";
 
-    public const BIND: string = "onBind";
+    public: const std::string BIND = "onBind";
 
-    public const ON_SAVE_INSTANCE_STATE: string = "onSaveInstanceState";
+    public: const std::string ON_SAVE_INSTANCE_STATE = "onSaveInstanceState";
 
-    public const ON_START_COMMAND: string = "onStartCommand";
+    public: const std::string ON_START_COMMAND = "onStartCommand";
 
 };
 

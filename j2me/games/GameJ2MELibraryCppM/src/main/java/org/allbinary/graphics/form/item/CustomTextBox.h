@@ -1,0 +1,131 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H
+
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <javax/microedition/lcdui/CommandListener.h>
+
+      
+#include <javax/microedition/lcdui/Font.h>
+
+      
+#include <javax/microedition/lcdui/Graphics.h>
+
+      
+#include <org/allbinary/J2MEUtil.h>
+
+      
+#include <org/allbinary/game/displayable/canvas/GameCommandCanvas.h>
+
+      
+#include <org/allbinary/game/input/Input.h>
+
+      
+#include <org/allbinary/game/input/InputFactory.h>
+
+      
+#include <org/allbinary/game/input/PlatformKeyFactory.h>
+
+      
+#include <org/allbinary/game/input/event/RawKeyEventListener.h>
+
+      
+#include <org/allbinary/graphics/color/BasicColor.h>
+
+      
+#include <org/allbinary/graphics/form/item/validation/TextItemVisitor.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsConstructor.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "ABTextFieldItem.h"
+
+class CustomTextBox: public GameCommandCanvas: public RawKeyEventListener {
+        
+
+    private: const textFieldItem: ABTextFieldItem;
+
+public constructor (CommandListener cmdListener, string label, string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+
+    public submit();
+
+    private: const inputFactory: InputFactory = InputFactory.getInstance()!;
+
+    public onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
+
+    public keyPressed(int32_t keyCode);
+
+    public keyReleased(int32_t keyCode);
+
+    public keyRepeated(int32_t keyCode);
+
+    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+
+    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+
+    public paint(Graphics graphics);
+
+    public paintXY(Graphics graphics, int32_t x, int32_t y);
+
+    public ABTextFieldItem getTextFieldItem();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H

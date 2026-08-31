@@ -1,0 +1,79 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_H
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_H
+
+            #include "../../../../../java/lang/Object.h"
+        
+#include <jsinterop/annotations/JsType.h>
+
+      
+#include <org/allbinary/graphics/PointFactory.h>
+
+      
+#include <org/allbinary/graphics/Rectangle.h>
+
+      
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class FormUtil
+            : public Object
+         {
+        
+
+    private: static const instance: FormUtil = new FormUtil();
+
+    public static FormUtil getInstance();
+
+    public Rectangle createFormRectangle();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_H

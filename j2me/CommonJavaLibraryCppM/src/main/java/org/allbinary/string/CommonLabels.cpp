@@ -51,11 +51,10 @@
 class CommonLabels
             : public Object
          {
-        
 
-    private: static const instance: CommonLabels = new CommonLabels();
+    private: static const CommonLabels instance = new CommonLabels();
 
-    public static CommonLabels getInstance(){
+    public: static CommonLabels getInstance(){
 
 
 
@@ -65,33 +64,33 @@ class CommonLabels
 }
 
 
-    public const WIDTH_LABEL: string = " Width: ";
+    public: const std::string WIDTH_LABEL = " Width: ";
 
-    public const HEIGHT_LABEL: string = " Height: ";
+    public: const std::string HEIGHT_LABEL = " Height: ";
 
-    public const END_LABEL: string = "End: ";
+    public: const std::string END_LABEL = "End: ";
 
-    public const TOTAL_LABEL: string = "Total: ";
+    public: const std::string TOTAL_LABEL = "Total: ";
 
-    public const INDEX_LABEL: string = "index: ";
+    public: const std::string INDEX_LABEL = "index: ";
 
-    public const START_LABEL: string = "Start: ";
+    public: const std::string START_LABEL = "Start: ";
 
-    public const COMMAND_LABEL: string = "Command: ";
+    public: const std::string COMMAND_LABEL = "Command: ";
 
-    public const NAME_LABEL: string = "Name: ";
+    public: const std::string NAME_LABEL = "Name: ";
 
-    public const START: string = this.START_LABEL;
+    public: const std::string START = this.START_LABEL;
 
-    public const ELAPSED: string = " Elapsed: ";
+    public: const std::string ELAPSED = " Elapsed: ";
 
-    public const CURRENT: string = " Current: ";
+    public: const std::string CURRENT = " Current: ";
 
-    public const ITEM_LABEL: string = "Item: ";
+    public: const std::string ITEM_LABEL = "Item: ";
 
-    public const RESULT_: string = "Result: ";
+    public: const std::string RESULT_ = "Result: ";
 
-    public const COLON_SEP: string = ": ";
+    public: const std::string COLON_SEP = ": ";
 
 };
 

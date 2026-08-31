@@ -1,0 +1,94 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEFACTORY_H
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEFACTORY_H
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <javax/servlet/jsp/PageContext.h>
+
+      
+#include <org/allbinary/data/tables/transform/info/TransformInfoEntity.h>
+
+      
+#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/allbinary/logic/visual/transform/info/TransformInfoObjectFactory.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "TransformTemplateInterface.h"
+
+class TransformTemplateFactory
+            : public Object
+         {
+        
+
+    private: static const instance: TransformTemplateFactory = new TransformTemplateFactory();
+
+    public static TransformTemplateFactory getInstance();
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+private constructor ();
+
+                //@Throws(Exception.constructor)
+            
+    public TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, string templateName, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEFACTORY_H

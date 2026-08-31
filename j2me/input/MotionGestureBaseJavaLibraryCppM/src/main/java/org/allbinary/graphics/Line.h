@@ -1,0 +1,83 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GRAPHICS_LINE_H
+        #define ORG_ALLBINARY_GRAPHICS_LINE_H
+
+            #include "../../../java/lang/Object.h"
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "GPoint.h"
+#include "PointFactory.h"
+
+class Line
+            : public Object
+         {
+        
+
+    private: p1: GPoint;
+
+    private: p2: GPoint;
+
+    private: deltaX: double= 0.0;
+
+    private: deltaY: double= 0.0;
+
+public constructor (GPoint p1, GPoint p2);
+
+    public double getGradient();
+
+    update();
+
+    public double getDeltaX();
+
+    public double getDeltaY();
+
+    public GPoint getP1();
+
+    public GPoint getP2();
+
+    public setP1(GPoint p1);
+
+    public setP2(GPoint p2);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GRAPHICS_LINE_H

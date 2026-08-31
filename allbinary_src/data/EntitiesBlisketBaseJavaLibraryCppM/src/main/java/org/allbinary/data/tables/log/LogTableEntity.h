@@ -1,0 +1,75 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2011 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
+        #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
+
+#include <org/allbinary/business/entry/EntryData.h>
+
+      
+#include <org/allbinary/business/init/db/LogDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h>
+
+      
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "LogTableEntityInterface.h"
+
+class LogTableEntity: public AbSqlBean: public LogTableEntityInterface {
+        
+
+    private: const tableName: string = "log";
+
+public constructor ();
+
+    public string createTableStatement();
+
+    public string createTable();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H

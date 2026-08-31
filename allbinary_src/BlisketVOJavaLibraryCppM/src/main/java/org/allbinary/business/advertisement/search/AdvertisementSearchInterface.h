@@ -1,0 +1,92 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H
+
+#include <java/util/HashMap.h>
+
+      
+#include <org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h>
+
+      
+#include <org/allbinary/business/advertisement/search/website/AdvertisementWebsiteInterface.h>
+
+      
+#include <org/allbinary/logic/control/contraints/price/PriceConstraintInterface.h>
+
+      
+#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class AdvertisementSearchInterface {
+        
+
+    AdvertisementWebsiteInterface getWebSite();
+
+    AdvertisementCategoryInterface getCategory();
+
+    TwoDimensionalConstraintInterface getSizeConstraints();
+
+    PriceConstraintInterface getPricingConstraints();
+
+    int32_t getPageNumber();
+
+    int32_t getProductsPerPage();
+
+    HashMap<any, any> getSearchParams();
+
+    setCategory(AdvertisementCategoryInterface advertisementCategoryInterface);
+
+    setSizeConstraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface);
+
+    setPricingConstraints(PriceConstraintInterface priceConstraintInterface);
+
+    setPageNumber(int32_t pageNumber);
+
+    setProductsPerPage(int32_t productsPerPage);
+
+    setSearchParams(HashMap<any, any> columnAndKeywordHashMap);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H

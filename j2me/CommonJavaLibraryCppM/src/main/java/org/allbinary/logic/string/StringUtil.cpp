@@ -54,11 +54,10 @@
 class StringUtil
             : public Object
          {
-        
 
-    private: static const instance: StringUtil = new StringUtil();
+    private: static const StringUtil instance = new StringUtil();
 
-    public static StringUtil getInstance(){
+    public: static StringUtil getInstance(){
 
 
 
@@ -68,26 +67,26 @@ class StringUtil
 }
 
 
-    public const INIT_STRING: string = .toCharArray();
+    public: const std::string INIT_STRING = .toCharArray();
 
-    public const NULL_STRING: string = "null";
+    public: const std::string NULL_STRING = "null";
 
-    public const EMPTY_STRING: string = "";
+    public: const std::string EMPTY_STRING = "";
 
-    public ONE_EMPTY_STRING_ARRAY: std::vector<string> = 
+    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = 
                                                         [
                                                             this.EMPTY_STRING
                                                         ];
 
-    private: const stringArray: std::vector<string> = [];
+    private: const std::vector<std::string> stringArray = [];
 
-private constructor (){
+private: StringUtil(){
 
             super();
         }
 
 
-    public string getNonNull(string string){
+    public: std::string getNonNull(std::string string){
 
                         if(string == 
                                     null
@@ -116,7 +115,7 @@ private constructor (){
 }
 
 
-    public std::vector<string> getArrayInstance(){
+    public: std::vector<std::string> getArrayInstance(){
 
 
 
@@ -126,19 +125,19 @@ private constructor (){
 }
 
 
-    public int32_t count(string string, char aChar){
+    public: int32_t count(std::string string, char aChar){
 
-    count: int32_t = 0;;
+    int32_t count = 0;;
     
 
-    size: int32_t = string.length!;;
+    int32_t size = string.length!;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
                         if(string[index] == aChar)
@@ -160,7 +159,7 @@ private constructor (){
 }
 
 
-    public string toString(any = {} anyType){
+    public: std::string toString(any = {} anyType){
 
                         if(anyType != 
                                     null

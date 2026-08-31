@@ -1,0 +1,80 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H
+
+            #include "../../../../../../java/lang/Object.h"
+        
+            #include "../../../../../../java/lang/Cloneable.h"
+        
+#include <java/awt.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "Rectangle.h"
+
+class MotionRectangle
+            : public Object
+        : public Cloneable {
+        
+
+    private: rectangle: Rectangle;
+
+    private: pixelDeltaVector: Vector;
+
+public constructor (Rectangle rectangle);
+
+    public Rectangle getRectangle();
+
+    public setRectangle(Rectangle rectangle);
+
+    public Vector getPixelDeltaVector();
+
+    public setPixelDeltaVector(Vector pixelDeltaVector);
+
+    public any clone();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H

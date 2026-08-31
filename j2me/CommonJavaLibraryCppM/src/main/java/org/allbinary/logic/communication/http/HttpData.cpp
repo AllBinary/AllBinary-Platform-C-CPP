@@ -45,11 +45,10 @@
 class HttpData
             : public Object
          {
-        
 
-    private: static const instance: HttpData = new HttpData();
+    private: static const HttpData instance = new HttpData();
 
-    public static HttpData getInstance(){
+    public: static HttpData getInstance(){
 
 
 
@@ -59,19 +58,19 @@ class HttpData
 }
 
 
-    public const EQUALS: string;
+    public: const std::string EQUALS;
 
-    public const PARAM_SEP: string;
+    public: const std::string PARAM_SEP;
 
-    public const URL_PARAM_SEP: string;
+    public: const std::string URL_PARAM_SEP;
 
-    public const URL_LABEL: string = "Url: ";
+    public: const std::string URL_LABEL = "Url: ";
 
-private constructor (){
+private: HttpData(){
 
             super();
         
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps.getInstance()!;;
     
 this.EQUALS= commonSeps!.EQUALS;
     

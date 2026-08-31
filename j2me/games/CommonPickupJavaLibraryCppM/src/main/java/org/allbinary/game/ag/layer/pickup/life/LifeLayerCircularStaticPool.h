@@ -1,0 +1,75 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_H
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_H
+
+            #include "../../../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/game/ag/life/Life.h>
+
+      
+#include <org/allbinary/game/ag/life/LifeInterfaceCompositeInterface.h>
+
+      
+#include <org/allbinary/layer/AllBinaryLayer.h>
+
+      
+#include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
+
+      
+#include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "LifeLayer.h"
+
+class LifeLayerCircularStaticPool: public AllBinaryLayerCircularPool {
+        
+
+public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+
+                //@Throws(Exception.constructor)
+            
+    public visit(AllBinaryLayer sourceLayerInterface);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_H

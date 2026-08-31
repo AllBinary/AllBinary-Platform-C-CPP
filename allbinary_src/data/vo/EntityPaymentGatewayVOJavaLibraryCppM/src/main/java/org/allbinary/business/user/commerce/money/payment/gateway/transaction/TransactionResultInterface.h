@@ -1,0 +1,100 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_H
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_H
+
+#include <java/util/Vector.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class TransactionResultInterface {
+        
+
+    string toString();
+
+    Vector getValues();
+
+    string getResult();
+
+    string getPnRef();
+
+    string getRespMsg();
+
+    string getAvsAddr();
+
+    string getAvsZip();
+
+    string getOrigResult();
+
+    string getStatus();
+
+    string getFraudCode();
+
+    string getFraudMsg();
+
+    string getErrCode();
+
+    string getScore();
+
+    string getReason1();
+
+    string getReason2();
+
+    string getReason3();
+
+    string getException1();
+
+    string getException2();
+
+    string getException3();
+
+    string getException4();
+
+    string getException5();
+
+    string getException6();
+
+    string getException7();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_H

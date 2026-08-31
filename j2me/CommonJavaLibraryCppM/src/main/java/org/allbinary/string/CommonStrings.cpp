@@ -51,11 +51,10 @@
 class CommonStrings
             : public Object
          {
-        
 
-    private: static const instance: CommonStrings = new CommonStrings();
+    private: static const CommonStrings instance = new CommonStrings();
 
-    public static CommonStrings getInstance(){
+    public: static CommonStrings getInstance(){
 
 
 
@@ -65,110 +64,110 @@ class CommonStrings
 }
 
 
-    public const EMPTY: string = "Empty";
+    public: const std::string EMPTY = "Empty";
 
-    public const CREATE_IMAGE: string = "createImage";
+    public: const std::string CREATE_IMAGE = "createImage";
 
-    public const PLEASE_WAIT: string = "Please Wait";
+    public: const std::string PLEASE_WAIT = "Please Wait";
 
-    public const PLEASE_WAIT_FOR_SERVER: string = "Please Wait Getting Data From Server...";
+    public: const std::string PLEASE_WAIT_FOR_SERVER = "Please Wait Getting Data From Server...";
 
-    public const PERIODS: string = "...";
+    public: const std::string PERIODS = "...";
 
-    public const LOADING: string = "Loading...";
+    public: const std::string LOADING = "Loading...";
 
-    public const CONSTRUCTOR: string = "Constructor";
+    public: const std::string CONSTRUCTOR = "Constructor";
 
-    public const START: string = "Start";
+    public: const std::string START = "Start";
 
-    public const END: string = "End";
+    public: const std::string END = "End";
 
-    public const EXCEPTION: string = "Exception";
+    public: const std::string EXCEPTION = "Exception";
 
-    public const EXCEPTION_LABEL: string = "Exception: ";
+    public: const std::string EXCEPTION_LABEL = "Exception: ";
 
-    public const CLEANUP: string = "cleanup";
+    public: const std::string CLEANUP = "cleanup";
 
-    public const INIT: string = "init";
+    public: const std::string INIT = "init";
 
-    public const CLOSE: string = "close";
+    public: const std::string CLOSE = "close";
 
-    public const UP: string = "up";
+    public: const std::string UP = "up";
 
-    public const DOWN: string = "down";
+    public: const std::string DOWN = "down";
 
-    public const LEFT: string = "left";
+    public: const std::string LEFT = "left";
 
-    public const RIGHT: string = "right";
+    public: const std::string RIGHT = "right";
 
-    public const DIRECTION_NAME: std::vector<string> = 
+    public: const std::vector<std::string> DIRECTION_NAME = 
                                                         [
                                                             this.DOWN,this.LEFT,this.RIGHT,this.UP
                                                         ];
 
-    public const CREATE: string = "Create";
+    public: const std::string CREATE = "Create";
 
-    public const REMOVE: string = "Remove";
+    public: const std::string REMOVE = "Remove";
 
-    public const UPDATE: string = "Update";
+    public: const std::string UPDATE = "Update";
 
-    public const DELETE: string = "Delete";
+    public: const std::string DELETE = "Delete";
 
-    public const delete: string = "delete";
+    public: const std::string delete_ = "delete";
 
-    public const LOAD: string = "load";
+    public: const std::string LOAD = "load";
 
-    public const SAVE: string = "save";
+    public: const std::string SAVE = "save";
 
-    public const ADD: string = "Add";
+    public: const std::string ADD = "Add";
 
-    public const DROP: string = "Drop";
+    public: const std::string DROP = "Drop";
 
-    public const INSERT: string = "Insert";
+    public: const std::string INSERT = "Insert";
 
-    public const VISIT: string = "visit";
+    public: const std::string VISIT = "visit";
 
-    public const START_METHOD_NAME: string = this.START;
+    public: const std::string START_METHOD_NAME = this.START;
 
-    public const END_METHOD_NAME: string = "end";
+    public: const std::string END_METHOD_NAME = "end";
 
-    public const GET: string = "get";
+    public: const std::string GET = "get";
 
-    public const PROCESS: string = "process";
+    public: const std::string PROCESS = "process";
 
-    public const GET_INSTANCE: string = "getInstance";
+    public: const std::string GET_INSTANCE = "getInstance";
 
-    public const GET_LIST: string = "getList";
+    public: const std::string GET_LIST = "getList";
 
-    public const RUN: string = "run";
+    public: const std::string RUN = "run";
 
-    public const START_RUNNABLE: string = "Start Runnable";
+    public: const std::string START_RUNNABLE = "Start Runnable";
 
-    public const RUNNING: string = "Running";
+    public: const std::string RUNNING = "Running";
 
-    public const END_RUNNABLE: string = "End Runnable";
+    public: const std::string END_RUNNABLE = "End Runnable";
 
-    public const DISABLE: string = "disable";
+    public: const std::string DISABLE = "disable";
 
-    public const ENABLE: string = "enable";
+    public: const std::string ENABLE = "enable";
 
-    public const SUCCESS: string = "Command Success";
+    public: const std::string SUCCESS = "Command Success";
 
-    public const FAILURE: string = "Command Failed";
+    public: const std::string FAILURE = "Command Failed";
 
-    public const NOT_IMPLEMENTED: string = "Not Implemented";
+    public: const std::string NOT_IMPLEMENTED = "Not Implemented";
 
-    public const UNKNOWN: string = "Unknown";
+    public: const std::string UNKNOWN = "Unknown";
 
-    public const ON_EVENT: string = "onEvent";
+    public: const std::string ON_EVENT = "onEvent";
 
-    public const IS_VALID: string = "isValid";
+    public: const std::string IS_VALID = "isValid";
 
-    public const TOSTRING: string = "toString";
+    public: const std::string TOSTRING = "toString";
 
-    public const ADD_LISTENER: string = "addListener";
+    public: const std::string ADD_LISTENER = "addListener";
 
-    public const REMOVE_LISTENER: string = "removeListener";
+    public: const std::string REMOVE_LISTENER = "removeListener";
 
 };
 

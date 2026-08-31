@@ -1,0 +1,61 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
+
+            #include "../../../../java/lang/Object.h"
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class LicenseLevelUtil
+            : public Object
+         {
+        
+
+    private: static const instance: LicenseLevelUtil = new LicenseLevelUtil();
+
+    public static LicenseLevelUtil getInstance();
+
+    public int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H

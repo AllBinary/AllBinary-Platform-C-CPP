@@ -1,0 +1,153 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
+        #define ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
+
+            #include "../../java/lang/Exception.h"
+        
+#include <java/util/HashMap.h>
+
+      
+#include <java/util/Vector.h>
+
+      
+#include <javax/servlet/http/HttpServletRequest.h>
+
+      
+#include <javax/servlet/jsp/PageContext.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFront.h>
+
+      
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+
+      
+#include <org/allbinary/business/installer/Portion.h>
+
+      
+#include <org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityFactory.h>
+
+      
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/event/handler/factory/AdminUserEmailEventHandlerSingletons.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/event/handler/factory/StoreAdminUserEmailEventHandlerSingletons.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/info/AdminEmailInfo.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/info/EmailInfo.h>
+
+      
+#include <org/allbinary/logic/communication/smtp/info/StoreEmailInfo.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        #include "ModifyTable.h"
+
+class StoreFrontsRequestHelper: public ModifyTable {
+        
+
+    const logUtil: LogUtil = LogUtil.getInstance()!;
+
+    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+
+    private: const pageContext: PageContext;
+
+    private: const request: HttpServletRequest;
+
+    private: const weblisketSession: WeblisketSession;
+
+    private: storeName: string;
+
+    private: modifyingStoreFrontInterface: StoreFrontInterface;
+
+    private: const portion: Portion;
+
+public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+
+                //@Throws(Exception.constructor)
+            
+    getFormData();
+
+    public string update();
+
+                //@Throws(Exception.constructor)
+            
+    public sendStoreCreatedEmails();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public string install();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public string insert();
+
+    public string delete();
+
+};
+
+            
+
+
+        #endif //ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
