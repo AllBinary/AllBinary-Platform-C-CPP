@@ -34,6 +34,7 @@
         <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
     </properties>
 
+    <dependencies>
 <!--        
         <dependency>
             <groupId>junit</groupId>

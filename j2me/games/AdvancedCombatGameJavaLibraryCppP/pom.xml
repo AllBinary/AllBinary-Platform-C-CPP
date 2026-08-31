@@ -77,14 +77,7 @@
 
     </modules>
 
-    <properties>
-        <cygwin.home>G:/cygwin64</cygwin.home>
-        <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
-        <native.c.standard>c17</native.c.standard>
-        <native.cpp.standard>c++17</native.cpp.standard>
-        <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
-    </properties>
-
+    <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
