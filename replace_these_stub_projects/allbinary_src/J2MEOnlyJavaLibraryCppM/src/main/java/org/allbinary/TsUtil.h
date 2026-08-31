@@ -1,0 +1,106 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2025 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_TSUTIL_H
+        #define ORG_ALLBINARY_TSUTIL_H
+
+            #include "../../java/lang/Object.h"
+        
+            #include "../../java/lang/InterruptedException.h"
+        
+#include <javax/microedition/lcdui/Displayable.h>
+
+      
+#include <javax/microedition/lcdui/Form.h>
+
+      
+#include <javax/microedition/rms/InvalidRecordIDException.h>
+
+      
+#include <javax/microedition/rms/RecordStore.h>
+
+      
+#include <javax/microedition/rms/RecordStoreException.h>
+
+      
+#include <javax/microedition/rms/RecordStoreNotOpenException.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class TsUtil
+            : public Object
+         {
+        
+
+    private: static const instance: TsUtil = new TsUtil();
+
+    public static TsUtil getInstance();
+
+    public int32_t hashCode(any = {} anyType);
+
+                //@Throws(InterruptedException.constructor)
+            
+    public waitFor(any = {} any, int64_t timeoutMillis);
+
+                //@Throws(RecordStoreNotOpenException.constructor, InvalidRecordIDException.constructor, RecordStoreException.constructor)
+            
+    public std::vector<int8_t> getRecord(any = {} anyType, int32_t recordId);
+
+    public int32_t compareTo(string a, string b);
+
+    public bool equalIgnoreCase(string a, string b);
+
+    public bool equalsNotstring(any = {} anyType, any = {} object2);
+
+    public int32_t toNumberFromChar(char value);
+
+    public int32_t toNumber(int32_t value);
+
+    public std::vector<int8_t> getByteArray(string string);
+
+    public bool isItemListener(Displayable owner);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_TSUTIL_H

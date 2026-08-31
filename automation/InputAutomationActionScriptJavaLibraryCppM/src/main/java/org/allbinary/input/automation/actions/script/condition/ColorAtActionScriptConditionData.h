@@ -1,0 +1,75 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONDATA_H
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONDATA_H
+
+            #include "../../../../../../../java/lang/Object.h"
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class ColorAtActionScriptConditionData
+            : public Object
+         {
+        
+
+    public static NAME: string = "COLOR_AT_ACTION_CONDITION_NAME";
+
+    public static LOCATION_X: string = "COLOR_AT_ACTION_CONDITION_LOCATION_X";
+
+    public static LOCATION_Y: string = "COLOR_AT_ACTION_CONDITION_LOCATION_Y";
+
+    public static MIN_RED: string = "COLOR_AT_ACTION_CONDITION_MIN_RED";
+
+    public static MAX_RED: string = "COLOR_AT_ACTION_CONDITION_MAX_RED";
+
+    public static MIN_GREEN: string = "COLOR_AT_ACTION_CONDITION_MIN_GREEN";
+
+    public static MAX_GREEN: string = "COLOR_AT_ACTION_CONDITION_MAX_GREEN";
+
+    public static MIN_BLUE: string = "COLOR_AT_ACTION_CONDITION_MIN_BLUE";
+
+    public static MAX_BLUE: string = "COLOR_AT_ACTION_CONDITION_MAX_BLUE";
+
+private constructor ();
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONDATA_H

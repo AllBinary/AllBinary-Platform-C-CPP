@@ -12,16 +12,20 @@ c_standard="$5"
 cpp_standard="$6"
 read -r -a compiler_flags <<< "$7"
 include_dir="$(cygpath -u "$8")"
-relative_include_dir="$include_dir/java/lang"
+include_overlay="$object_dir/include-overlay"
 
 mkdir -p "$object_dir" "$archive_dir"
 find "$object_dir" -type f -delete
+mkdir -p "$include_overlay"
+cp -R "$include_dir"/. "$include_overlay"/
 
 objects=()
 while IFS= read -r -d '' source; do
     relative_path="${source#"$source_dir"/}"
     object="$object_dir/${relative_path%.*}.o"
+    relative_include_dir="$include_overlay/$(dirname "$relative_path")"
     mkdir -p "$(dirname "$object")"
+    mkdir -p "$relative_include_dir"
 
     case "$source" in
         *.c)

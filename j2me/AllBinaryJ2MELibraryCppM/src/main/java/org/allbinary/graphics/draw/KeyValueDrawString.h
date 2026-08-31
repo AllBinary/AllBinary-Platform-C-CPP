@@ -1,0 +1,88 @@
+
+        /*
+                * 
+                *  AllBinary Open License Version 1
+                *  Copyright (c) 2011 AllBinary
+                *  
+                *  By agreeing to this license you and any business entity you represent are
+                *  legally bound to the AllBinary Open License Version 1 legal agreement.
+                *  
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+                *  
+                *  Created By: Travis Berthelot  
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+        #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_H
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_H
+
+            #include "../../../../java/lang/Object.h"
+        
+#include <javax/microedition/lcdui/Graphics.h>
+
+      
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+
+      
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+
+      
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+class KeyValueDrawString
+            : public Object
+        : public UpdateMyFontInterface {
+        
+
+    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+
+    private: const LABEL: string;
+
+    private: const labelX: int32_t;
+
+    private: valueX: int32_t= 0;
+
+    private: value: string = StringUtil.getInstance()!.EMPTY_STRING;
+
+public constructor (string label, int32_t x);
+
+    public updateMeasurement(Graphics graphics);
+
+    public paint(Graphics graphics, int32_t y);
+
+    public update(string value);
+
+};
+
+            
+
+
+        #endif //ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_H
