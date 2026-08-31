@@ -76,7 +76,7 @@
         <module>../../allbinary_src/logging/BasicLogConfigTypeJavaLibraryCppM</module>
         <module>../../allbinary_src/logging/LogConfigTypeGameClientJavaLibraryCppM</module>
 
-        <module>../../allbinary_src/hardware/HardwareLibraryPOCppM</module>
+        <module>../../allbinary_src/hardware/HardwareLibraryPOM</module>
 
         <module>../lib/TrigBaseLibraryCppM</module>
 
